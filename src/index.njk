@@ -83,34 +83,15 @@ ctaFull: true
       <span class="label">Auszug aus der Karte</span>
       <h2 class="h-lg">Was heute<br />auf dem Tisch steht</h2>
       <div class="teaser-list">
+{%- for group in menu %}{% if group.onHome %}
         <div class="teaser-row">
           <div>
-            <div class="teaser-name">Klassiker</div>
-            <div class="teaser-note">Doppelapfel, Traube Minze, Zitrone Minze</div>
+            <div class="teaser-name">{{ group.name }}</div>
+            <div class="teaser-note">{{ group.teaser }}</div>
           </div>
-          <div class="teaser-price">ab 14 €</div>
+          <div class="teaser-price">{{ group.teaserPrice }}</div>
         </div>
-        <div class="teaser-row">
-          <div>
-            <div class="teaser-name">Fruchtig</div>
-            <div class="teaser-note">Passionsfrucht, Melone, Blaubeere</div>
-          </div>
-          <div class="teaser-price">ab 15 €</div>
-        </div>
-        <div class="teaser-row">
-          <div>
-            <div class="teaser-name">Dark Leaf</div>
-            <div class="teaser-note">Kräftige Blätter, Kohleführung vom Haus</div>
-          </div>
-          <div class="teaser-price">ab 17 €</div>
-        </div>
-        <div class="teaser-row">
-          <div>
-            <div class="teaser-name">Fruchtkopf</div>
-            <div class="teaser-note">In Ananas oder Melone, 20 Minuten Vorbereitung</div>
-          </div>
-          <div class="teaser-price">ab 22 €</div>
-        </div>
+{%- endif %}{% endfor %}
       </div>
       <div class="btn-row">
         <a class="btn btn-outline" href="karte.html">Ganze Karte ansehen</a>
@@ -129,20 +110,7 @@ ctaFull: true
           Reservierte Tische halten wir 20 Minuten.
         </p>
       </div>
-      <div class="hours">
-        <div class="hours-row" data-day="1,2,3,4">
-          <span>Montag – Donnerstag</span><span>17:00 – 01:00</span>
-        </div>
-        <div class="hours-row" data-day="5,6">
-          <span>Freitag &amp; Samstag</span><span>17:00 – 03:00</span>
-        </div>
-        <div class="hours-row" data-day="0">
-          <span>Sonntag</span><span>16:00 – 00:00</span>
-        </div>
-        <div class="hours-row">
-          <span>Feiertage</span><span>wie Samstag</span>
-        </div>
-      </div>
+{% include "partials/hours.njk" %}
     </div>
   </section>
 

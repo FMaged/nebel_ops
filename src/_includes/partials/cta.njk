@@ -4,8 +4,8 @@
       <span class="label">Reservierung</span>
       <h2 class="h-lg">Sag uns, wann —<br />wir stopfen den<br /><em style="font-style: italic; color: var(--purple-light)">ersten Kopf.</em></h2>
       <div class="btn-row">
-        <a class="btn btn-primary" href="tel:+4971112345678">0711 123 456 78</a>
-        <a class="btn btn-outline" href="https://wa.me/4971112345678">WhatsApp</a>
+        <a class="btn btn-primary" href="{{ site.phone.href }}">{{ site.phone.display }}</a>
+        <a class="btn btn-outline" href="{{ site.whatsapp }}">WhatsApp</a>
 {%- if ctaFull %}
         <a class="btn btn-outline" href="kontakt.html">Anfrage senden</a>
 {%- endif %}

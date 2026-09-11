@@ -1,0 +1,30 @@
+# Öffnungszeiten. Versorgt drei Stellen: die Anzeige auf Start- und
+# Kontaktseite, die data-day-Markierung des heutigen Tages (main.js)
+# und die strukturierten Daten für Suchmaschinen.
+#
+# days: 0 = Sonntag ... 6 = Samstag. Zeilen ohne days werden nie markiert.
+# schema: bewusst redundant zu label/time — spart das Übersetzen deutscher
+# Wochentage und das Parsen der Zeitspanne im Template.
+- label: "Montag – Donnerstag"
+  time: "17:00 – 01:00"
+  days: [1, 2, 3, 4]
+  schema:
+    opens: "17:00"
+    closes: "01:00"
+    dayOfWeek: [Monday, Tuesday, Wednesday, Thursday]
+- label: "Freitag & Samstag"
+  time: "17:00 – 03:00"
+  days: [5, 6]
+  schema:
+    opens: "17:00"
+    closes: "03:00"
+    dayOfWeek: [Friday, Saturday]
+- label: "Sonntag"
+  time: "16:00 – 00:00"
+  days: [0]
+  schema:
+    opens: "16:00"
+    closes: "00:00"
+    dayOfWeek: [Sunday]
+- label: "Feiertage"
+  time: "wie Samstag"

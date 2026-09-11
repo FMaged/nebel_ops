@@ -7,175 +7,25 @@ heroKicker: "Die Karte"
 heroTitle: "Sorten,<br />nach Art<br />geordnet."
 heroSub: "Vierundzwanzig Sorten, drei Hausmischungen, Getränke ohne Alkohol und eine kleine Küche bis Mitternacht."
 ---
-
+{%- for group in menu %}
     <section class="menu-group reveal">
       <div class="wrap">
         <div class="menu-head">
-          <h2>Klassiker</h2>
-          <span class="menu-hint">Kopf 14 – 15 €</span>
+          <h2>{{ group.name }}</h2>
+          <span class="menu-hint">{{ group.hint }}</span>
         </div>
+{%- for item in group.items %}
         <div class="menu-item">
-          <div class="menu-item-name">Doppelapfel</div>
-          <div class="menu-item-price">14 €</div>
-          <div class="menu-item-note">Anis, kräftig, der Klassiker seit immer.</div>
+          <div class="menu-item-name">{{ item.name }}{% if item.flag %}<span class="flag">{{ item.flag }}</span>{% endif %}</div>
+          <div class="menu-item-price">{{ item.price }}</div>
+{%- if item.note %}
+          <div class="menu-item-note">{{ item.note }}</div>
+{%- endif %}
         </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Traube Minze</div>
-          <div class="menu-item-price">14 €</div>
-          <div class="menu-item-note">Kühl und lang brennend.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Zitrone Minze</div>
-          <div class="menu-item-price">14 €</div>
-          <div class="menu-item-note">Frisch, leicht säuerlich.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Nebel Nr. 1<span class="flag">Haus</span></div>
-          <div class="menu-item-price">15 €</div>
-          <div class="menu-item-note">Unsere Mischung: Zitrone, Minze, Kaktus.</div>
-        </div>
+{%- endfor %}
       </div>
     </section>
-    <section class="menu-group reveal">
-      <div class="wrap">
-        <div class="menu-head">
-          <h2>Fruchtig</h2>
-          <span class="menu-hint">Kopf 15 – 16 €</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Passionsfrucht</div>
-          <div class="menu-item-price">15 €</div>
-          <div class="menu-item-note">Süß, weich, für lange Sessions.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Melone Beere</div>
-          <div class="menu-item-price">15 €</div>
-          <div class="menu-item-note">Wassermelone mit Blaubeere.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Pfirsich Eis</div>
-          <div class="menu-item-price">16 €</div>
-          <div class="menu-item-note">Sehr mild, deutlich gekühlt.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Nebel Nr. 2<span class="flag">Haus</span></div>
-          <div class="menu-item-price">16 €</div>
-          <div class="menu-item-note">Mango, Maracuja, ein Hauch Minze.</div>
-        </div>
-      </div>
-    </section>
-    <section class="menu-group reveal">
-      <div class="wrap">
-        <div class="menu-head">
-          <h2>Dark Leaf</h2>
-          <span class="menu-hint">Kopf 17 – 19 €</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Dark Burley</div>
-          <div class="menu-item-price">17 €</div>
-          <div class="menu-item-note">Kräftiges Blatt, nur mit Erfahrung.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Schwarze Traube</div>
-          <div class="menu-item-price">18 €</div>
-          <div class="menu-item-note">Tief, trocken, wenig süß.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Nebel Noir<span class="flag">Haus</span></div>
-          <div class="menu-item-price">19 €</div>
-          <div class="menu-item-note">Unsere dunkle Mischung, Kohleführung vom Haus.</div>
-        </div>
-      </div>
-    </section>
-    <section class="menu-group reveal">
-      <div class="wrap">
-        <div class="menu-head">
-          <h2>Fruchtkopf</h2>
-          <span class="menu-hint">20 Minuten Vorbereitung</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Ananas</div>
-          <div class="menu-item-price">22 €</div>
-          <div class="menu-item-note">Im ausgehöhlten Fruchtkopf, für zwei bis vier.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Melone</div>
-          <div class="menu-item-price">24 €</div>
-          <div class="menu-item-note">Groß, kühl, hält besonders lange.</div>
-        </div>
-      </div>
-    </section>
-    <section class="menu-group reveal">
-      <div class="wrap">
-        <div class="menu-head">
-          <h2>Getränke</h2>
-          <span class="menu-hint">Ohne Alkohol</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Karak Chai</div>
-          <div class="menu-item-price">5,50 €</div>
-          <div class="menu-item-note">Schwarztee mit Milch und Kardamom, Kanne.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Minztee</div>
-          <div class="menu-item-price">5 €</div>
-          <div class="menu-item-note">Frische Minze, Kanne für zwei.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Frisch gepresst</div>
-          <div class="menu-item-price">5,50 – 7 €</div>
-          <div class="menu-item-note">Orange, Granatapfel oder Karotte-Ingwer.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Hausgemachte Limonade</div>
-          <div class="menu-item-price">4,50 €</div>
-          <div class="menu-item-note">Zitrone-Basilikum oder Ingwer-Birne.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Mocktails</div>
-          <div class="menu-item-price">8 – 9,50 €</div>
-          <div class="menu-item-note">Sechs Signatures, an der Bar geschüttelt.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Ayran, Wasser, Softdrinks</div>
-          <div class="menu-item-price">3 – 4 €</div>
-          <div class="menu-item-note">0,33 l.</div>
-        </div>
-      </div>
-    </section>
-    <section class="menu-group reveal">
-      <div class="wrap">
-        <div class="menu-head">
-          <h2>Kleine Küche</h2>
-          <span class="menu-hint">Warm bis Mitternacht</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Mezze für zwei</div>
-          <div class="menu-item-price">14 €</div>
-          <div class="menu-item-note">Hummus, Muhammara, Baba Ghanoush, Brot.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Halloumi vom Grill</div>
-          <div class="menu-item-price">8,50 €</div>
-          <div class="menu-item-note">Mit Granatapfel und Minze.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Hähnchenflügel</div>
-          <div class="menu-item-price">9 €</div>
-          <div class="menu-item-note">Sechs Stück, mild oder scharf.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Pommes mit Knoblauchsauce</div>
-          <div class="menu-item-price">5,50 €</div>
-          <div class="menu-item-note">Große Portion zum Teilen.</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-name">Baklava</div>
-          <div class="menu-item-price">6 €</div>
-          <div class="menu-item-note">Drei Stück, dazu Datteln.</div>
-        </div>
-      </div>
-    </section>
+{%- endfor %}
     <section class="section section-line reveal">
       <div class="wrap">
         <div class="menu-notes">

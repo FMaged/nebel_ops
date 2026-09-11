@@ -13,42 +13,37 @@ heroSub: "Reservierungen per Telefon oder WhatsApp, meist innerhalb einer Stunde
       <div>
         <div class="contact-block">
           <span class="label">Adresse</span>
-          <p>Tübinger Straße 47<br />70178 Stuttgart Süd</p>
+          <p>{{ site.street }}<br />{{ site.postalCode }} {{ site.district }}</p>
           <p class="form-note" style="margin-top:10px">Stadtbahn Marienplatz, zwei Minuten zu Fuß. Parkhaus Wilhelmsbau gegenüber.</p>
         </div>
 
         <div class="contact-block">
           <span class="label">Direkt erreichbar</span>
           <ul class="social">
-            <li><a href="tel:+4971112345678"><span>0711 123 456 78</span><span>Telefon</span></a></li>
-            <li><a href="https://wa.me/4971112345678"><span>Nachricht schreiben</span><span>WhatsApp</span></a></li>
-            <li><a href="mailto:hallo@nebel-lounge.de"><span>hallo@nebel-lounge.de</span><span>E-Mail</span></a></li>
-            <li><a href="https://instagram.com/nebel.lounge"><span>@nebel.lounge</span><span>Instagram</span></a></li>
+            <li><a href="{{ site.phone.href }}"><span>{{ site.phone.display }}</span><span>Telefon</span></a></li>
+            <li><a href="{{ site.whatsapp }}"><span>Nachricht schreiben</span><span>WhatsApp</span></a></li>
+            <li><a href="mailto:{{ site.email }}"><span>{{ site.email }}</span><span>E-Mail</span></a></li>
+            <li><a href="{{ site.instagram.url }}"><span>{{ site.instagram.handle }}</span><span>Instagram</span></a></li>
           </ul>
         </div>
 
         <div class="contact-block">
           <span class="label">Öffnungszeiten</span>
-          <div class="hours">
-            <div class="hours-row" data-day="1,2,3,4"><span>Montag – Donnerstag</span><span>17:00 – 01:00</span></div>
-            <div class="hours-row" data-day="5,6"><span>Freitag &amp; Samstag</span><span>17:00 – 03:00</span></div>
-            <div class="hours-row" data-day="0"><span>Sonntag</span><span>16:00 – 00:00</span></div>
-            <div class="hours-row"><span>Feiertage</span><span>wie Samstag</span></div>
-          </div>
+{% include "partials/hours.njk" %}
         </div>
 
         <div class="btn-row">
-          <a class="btn btn-primary" href="tel:+4971112345678">Jetzt anrufen</a>
-          <a class="btn btn-outline" href="https://wa.me/4971112345678">Per WhatsApp reservieren</a>
+          <a class="btn btn-primary" href="{{ site.phone.href }}">Jetzt anrufen</a>
+          <a class="btn btn-outline" href="{{ site.whatsapp }}">Per WhatsApp reservieren</a>
         </div>
       </div>
 
       <div>
         <span class="label">Anfahrt</span>
-        <a class="map" href="https://maps.google.com/?q=T%C3%BCbinger%20Stra%C3%9Fe%2047%2C%2070178%20Stuttgart">
+        <a class="map" href="{{ site.maps }}">
           <span>
             <span class="pin" aria-hidden="true"></span>
-            <strong>Tübinger Straße 47</strong>
+            <strong>{{ site.street }}</strong>
             <p>In Google Maps öffnen</p>
           </span>
         </a>

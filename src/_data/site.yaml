@@ -1,0 +1,27 @@
+# Alle Geschäftsdaten der Lounge. Änderungen hier wirken auf allen Seiten.
+name: Nebel Lounge
+tagline: Shisha Lounge · Stuttgart Süd
+url: https://nebel-lounge.de
+
+# Adresse
+street: Tübinger Straße 47
+postalCode: "70178"          # gequotet, sonst liest YAML eine Zahl
+city: Stuttgart
+district: Stuttgart Süd
+maps: https://maps.google.com/?q=T%C3%BCbinger%20Stra%C3%9Fe%2047%2C%2070178%20Stuttgart
+
+# Direkt erreichbar
+phone:
+  display: 0711 123 456 78
+  href: tel:+4971112345678
+whatsapp: https://wa.me/4971112345678
+email: hallo@nebel-lounge.de
+instagram:
+  handle: "@nebel.lounge"
+  url: https://instagram.com/nebel.lounge
+
+# Pflichthinweis im Footer
+ageNotice: Rauchen gefährdet die Gesundheit. Einlass ab 18 Jahren.
+
+# Wird in Phase 4 gesetzt, sobald das Hosting feststeht
+formAction: ""

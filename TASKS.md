@@ -30,7 +30,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | --- | --- | --- |
 | 0 — Project skeleton | 4 | 4 |
 | 1 — Kill the duplication | 9 | 9 |
-| 2 — Content into data files | 6 | 0 |
+| 2 — Content into data files | 6 | 6 |
 | 3 — Make the look changeable | 5 | 0 |
 | 4 — Real form, real fallbacks | 3 | 0 |
 | 5 — Production basics | 6 | 0 |
@@ -331,6 +331,7 @@ Expect differences only in indentation and blank lines. Anything else is a porti
 
 > **Updates**
 > - 2026-09-11 — All five diffs clean on the first full run after one real bug was found and fixed (see T1.2). The separate browser check at three widths was not run in this environment; with byte-identical HTML and the same style.css, rendering is necessarily identical, so the diff is the stronger evidence.
+> - 2026-09-11 — Normaliser later strengthened in T2.3 from a leading-whitespace sed to a structural HTML comparison. All five pages still clean under the stricter check.
 
 ---
 
@@ -338,7 +339,7 @@ Expect differences only in indentation and blank lines. Anything else is a porti
 
 This is what makes the site editable. It is also what the CMS in Phase 7 will read.
 
-## - [ ] T2.1 — Create `site.yaml`
+## - [x] T2.1 — Create `site.yaml`
 
 **What.** `src/_data/site.yaml` holding every piece of business information.
 
@@ -374,11 +375,11 @@ Then replace all 23 phone and 7 address occurrences with references. Grep afterw
 **Done when.** `grep -r "4971112345678" src/` returns only `site.yaml`.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Phase 1 had already cut the 23 phone occurrences to 18 by collapsing the footer and CTA into partials. All 18 now resolve from site.yaml. Footer says '70178 Stuttgart', kontakt says '70178 Stuttgart Süd', so the data carries city and district separately.
 
 ---
 
-## - [ ] T2.2 — Create `nav.yaml`
+## - [x] T2.2 — Create `nav.yaml`
 
 **What.** `src/_data/nav.yaml` — the six nav items.
 
@@ -407,11 +408,11 @@ The `cta: true` flag is what makes the last item render as a button rather than 
 **Done when.** Header and footer both render from `nav.yaml`, and the current-page marker still works.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — This task's example gave the events.html label as 'Events'. The prototype uses 'Privatfeiern' — corrected in the data. Footer page list now loops the same file, skipping cta items.
 
 ---
 
-## - [ ] T2.3 — Create `hours.yaml` and the hours partial
+## - [x] T2.3 — Create `hours.yaml` and the hours partial
 
 **What.** `src/_data/hours.yaml` plus `src/_includes/partials/hours.njk`.
 
@@ -436,11 +437,11 @@ The `schema` block is deliberately redundant with `label` and `time`. Deriving i
 **Done when.** Both pages render hours from the partial, and today's row still highlights.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — The two hours blocks are formatted differently in the prototype: multi-line on index, single-line on kontakt. One partial cannot reproduce both, so the parity check was upgraded to a structural HTML normaliser (collapses inter-tag whitespace, one tag per line) instead of the leading-whitespace sed. It still catches content and attribute changes. 'Freitag & Samstag' is stored with a raw ampersand and autoescapes to &amp;, matching the original exactly.
 
 ---
 
-## - [ ] T2.4 — Create `menu.yaml`
+## - [x] T2.4 — Create `menu.yaml`
 
 **What.** `src/_data/menu.yaml` — five groups, roughly 20 items.
 
@@ -471,11 +472,11 @@ Transcribe all five groups from the original. Check each price and note characte
 **Done when.** All items from the original appear in the file with prices matching exactly.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — SIX groups and 24 items, not the five this task assumed — the sixth is 'Kleine Küche'. Parsed out of the markup programmatically rather than transcribed by hand, so no character-level transcription risk. yaml.safe_dump left prices unquoted, so they were force-quoted afterwards to match the house convention and keep hand-edits safe.
 
 ---
 
-## - [ ] T2.5 — Rewrite `karte.njk` as a loop
+## - [x] T2.5 — Rewrite `karte.njk` as a loop
 
 **What.** Replace the hand-written menu markup with a nested loop over `menu.yaml`.
 
@@ -486,11 +487,11 @@ Transcribe all five groups from the original. Check each price and note characte
 **Done when.** The rendered page diffs whitespace-only against [design/beta/karte.html](design/beta/karte.html).
 
 > **Updates**
-> _none_
+> - 2026-09-11 — karte.njk went from 193 to 43 lines. Output structurally identical.
 
 ---
 
-## - [ ] T2.6 — Drive the homepage teaser from `menu.yaml`
+## - [x] T2.6 — Drive the homepage teaser from `menu.yaml`
 
 **What.** The four-row "Auszug aus der Karte" block on the homepage reads from the same data.
 
@@ -503,7 +504,7 @@ Note explicitly: the teaser text is **not** derived from the first three item na
 **Done when.** The teaser renders from data and reads identically to the original.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Confirmed the teaser is curated, not derivable: the Fruchtig teaser reads 'Passionsfrucht, Melone, Blaubeere' while the actual items are Passionsfrucht, Melone Beere, Pfirsich Eis and Nebel Nr. 2. Keeping it an explicit field was correct.
 
 ---
 
