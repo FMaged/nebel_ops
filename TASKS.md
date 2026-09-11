@@ -35,7 +35,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | 4 — Real form, real fallbacks | 3 | 3 |
 | 5 — Production basics | 6 | 5 |
 | 6 — Images and map | 2 | 0 |
-| 7 — CMS (optional) | 2 | 1 |
+| 7 — CMS (optional) | 3 | 2 |
 | 8 — Final verification | 7 | 6 |
 
 ---
@@ -948,6 +948,32 @@ Finally, confirm `_site/` contains nothing but static HTML, CSS, JS, fonts and i
 ---
 
 ---
+
+---
+
+## - [x] T7.3 — Make the images editable too
+
+**What.** `src/_data/bilder.yaml`, a rewritten figure partial, aspect-ratio CSS
+classes, and a "Bilder" collection in the CMS.
+
+**Why.** Found while answering the question "how does the owner change the
+images?". The answer was: they cannot. T6.1 had put the filename, alt text and
+pixel dimensions directly into the page templates, so the CMS could upload a file
+into the media folder but had no way to attach it to a page. Worse, the hardcoded
+`width` and `height` meant any replacement of a different size would have been
+stretched or would have shifted the layout.
+
+**How.** Image references moved into `bilder.yaml` as three named slots. The frame
+now takes its shape from a CSS class (`.figure-3-2`, `.figure-16-9`, `.figure-4-5`,
+`.figure-1-1`) with `object-fit: cover`, so an upload of any size is cropped into a
+fixed box and nothing shifts. The owner picks the shape from a dropdown. The CMS
+collection uses a YAML anchor so all three slots share one field definition.
+
+**Done when.** The owner can swap an image, its description, its caption and its
+shape from `/admin/` without touching a template, and `npm run check` stays green.
+
+> **Updates**
+> _none_
 
 ## - [x] T8.7 — Make the checks runnable
 

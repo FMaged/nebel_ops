@@ -1,9 +1,9 @@
-{#- Bild mit fester Größe: verhindert Layout-Sprünge beim Laden.
-    width/height sind die echten Pixelmaße der Datei. -#}
-<figure class="figure">
-  <img src="img/{{ bild }}" alt="{{ alt }}" width="{{ w }}" height="{{ h }}"
-       loading="lazy" decoding="async" />
-{%- if bildunterschrift %}
-  <figcaption>{{ bildunterschrift }}</figcaption>
+{#- Erwartet `bild` aus bilder.yaml. Das Seitenverhältnis kommt aus der
+    CSS-Klasse, nicht aus der Dateigröße — so springt beim Laden nichts,
+    egal welches Bild hochgeladen wird. -#}
+<figure class="figure figure-{{ bild.format }}">
+  <img src="{{ bild.datei }}" alt="{{ bild.alt }}" loading="lazy" decoding="async" />
+{%- if bild.unterschrift %}
+  <figcaption>{{ bild.unterschrift }}</figcaption>
 {%- endif %}
 </figure>

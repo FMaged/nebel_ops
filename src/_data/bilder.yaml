@@ -1,0 +1,20 @@
+# Die Bilder der Seite. Jeder Eintrag ist ein fester Platz im Layout.
+#
+# format bestimmt das Seitenverhältnis des Rahmens. Das Bild wird
+# darin zugeschnitten (object-fit: cover), deshalb ist die Größe der
+# hochgeladenen Datei egal und es springt beim Laden nichts.
+raum:
+  datei: img/platzhalter-raum.png
+  alt: Blick in den unteren Gastraum mit tiefen Sesseln und gedämpftem Licht
+  unterschrift: Untere Ebene
+  format: "3-2"
+terrasse:
+  datei: img/platzhalter-terrasse.png
+  alt: Überdachte Terrasse mit Heizstrahlern und zwölf Plätzen
+  unterschrift: Terrasse
+  format: "3-2"
+kopf:
+  datei: img/platzhalter-kopf.png
+  alt: Frisch gestopfter Kopf mit Kohle auf dem Tisch
+  unterschrift: Jeder Kopf wird auf Bestellung gestopft
+  format: "4-5"

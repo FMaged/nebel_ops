@@ -626,16 +626,22 @@ h2 + .lead                 { margin-top: 20px; }
 }
 .notice strong { color: var(--text); }
 
-/* Bilder — Seitenverhältnis kommt aus width/height im Markup,
-   deshalb springt beim Laden nichts. */
+/* Bilder — das Seitenverhältnis steckt in der Klasse, nicht in der Datei.
+   Dadurch springt nichts, egal welches Bild jemand hochlädt. */
 .figure { margin: 0; }
 .figure img {
+  display: block;
   width: 100%;
   height: auto;
+  object-fit: cover;
   border-radius: var(--radius);
   border: 1px solid var(--bg-line);
   background: var(--bg-soft);
 }
+.figure-3-2 img  { aspect-ratio: 3 / 2; height: auto; }
+.figure-16-9 img { aspect-ratio: 16 / 9; height: auto; }
+.figure-4-5 img  { aspect-ratio: 4 / 5; height: auto; }
+.figure-1-1 img  { aspect-ratio: 1 / 1; height: auto; }
 .figure figcaption {
   margin-top: 12px;
   font-size: 13px;

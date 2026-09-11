@@ -75,6 +75,31 @@ collections:
                     widget: list
                     field: { name: tag, label: Tag, widget: string }
 
+  - name: bilder
+    label: Bilder
+    files:
+      - name: bilder
+        label: Bilder der Seite
+        file: src/_data/bilder.yaml
+        fields:
+          - name: raum
+            label: Gastraum (Über uns)
+            widget: object
+            fields: &bildfelder
+              - { name: datei, label: Bild, widget: image, hint: "Hochladen oder aus der Mediathek wählen. Die Größe ist egal — das Bild wird in den Rahmen eingepasst." }
+              - { name: alt, label: Bildbeschreibung, widget: string, hint: "Für Screenreader und Suchmaschinen. Beschreibt den Raum, nicht das Foto." }
+              - { name: unterschrift, label: Bildunterschrift, widget: string, required: false, hint: "Steht klein unter dem Bild. Leer lassen für keine." }
+              - name: format
+                label: Seitenverhältnis
+                widget: select
+                options:
+                  - { label: "Querformat 3:2", value: "3-2" }
+                  - { label: "Breit 16:9", value: "16-9" }
+                  - { label: "Hochformat 4:5", value: "4-5" }
+                  - { label: "Quadratisch 1:1", value: "1-1" }
+          - { name: terrasse, label: Terrasse (Über uns), widget: object, fields: *bildfelder }
+          - { name: kopf, label: Kopf (Startseite), widget: object, fields: *bildfelder }
+
   - name: kontakt
     label: Kontaktdaten
     files:

@@ -108,16 +108,20 @@ console.log(`\nNebel Lounge — ${pages.length} Seiten\n`);
   probs.length ? bad("Strukturierte Daten gültig", probs.join("\n       ")) : ok("Strukturierte Daten gültig");
 }
 
-// 9. Bilder haben Maße und alt — sonst springt das Layout
+// 9. Bilder: alt, lazy, und ein Rahmen mit festem Seitenverhältnis
 {
   const probs = [];
-  for (const p of pages)
-    for (const m of read(p).matchAll(/<img\s[^>]*>/g)) {
+  for (const p of pages) {
+    const s = read(p);
+    for (const m of s.matchAll(/<img\s[^>]*>/g)) {
       const t = m[0];
-      for (const a of ["width=", "height=", "alt=", "loading="])
-        if (!t.includes(a)) probs.push(`${p}: ${a.replace("=", "")} fehlt an ${t.slice(0, 60)}…`);
+      for (const a of ["alt=", "loading="]) if (!t.includes(a)) probs.push(`${p}: ${a.replace("=", "")} fehlt an ${t.slice(0, 50)}…`);
+      if (/alt=""/.test(t)) probs.push(`${p}: leeres alt an ${t.slice(0, 50)}…`);
     }
-  probs.length ? bad("Bilder mit Maßen und alt", probs.join("\n       ")) : ok("Bilder mit Maßen und alt");
+    for (const m of s.matchAll(/<figure class="figure([^"]*)"/g))
+      if (!/figure-\d+-\d+/.test(m[1])) probs.push(`${p}: figure ohne Seitenverhältnis-Klasse — Layout würde springen`);
+  }
+  probs.length ? bad("Bilder mit alt und festem Rahmen", probs.join("\n       ")) : ok("Bilder mit alt und festem Rahmen");
 }
 
 // 10. Das Reveal blendet nur mit JavaScript aus
@@ -133,7 +137,7 @@ console.log(`\nNebel Lounge — ${pages.length} Seiten\n`);
 {
   const cfg = read("src/admin/config.yml");
   const probs = [];
-  for (const f of src.filter((p) => /_data\/(menu|hours|site)\.yaml$/.test(p)))
+  for (const f of src.filter((p) => /_data\/(menu|hours|site|bilder)\.yaml$/.test(p)))
     for (const m of read(f).matchAll(/^\s*-?\s*([a-zA-Z][\w]*):/gm)) {
       const key = m[1];
       if (!new RegExp(`name:\\s*${key}\\b`).test(cfg)) probs.push(`${key} (${f}) nicht in config.yml`);
