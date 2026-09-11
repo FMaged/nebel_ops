@@ -727,7 +727,7 @@ Update the footer partial to link both. Note: this changes the footer, which mea
 
 ---
 
-## - [x] T5.4 — Favicon and social preview image
+## - [ ] T5.4 — Favicon and social preview image
 
 **What.** A favicon set and one Open Graph image.
 
