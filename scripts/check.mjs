@@ -153,7 +153,7 @@ console.log(`\nNebel Lounge — ${pages.length} Seiten\n`);
 {
   const todo = [];
   const cfg = read("src/admin/config.yml");
-  if (/BENUTZER|DEINE-SEITE/.test(cfg)) todo.push("src/admin/config.yml: repo und base_url eintragen — sonst kein CMS-Login");
+  if (/BENUTZER/.test(cfg)) todo.push("src/admin/config.yml: repo eintragen — sonst kein CMS-Login");
   if (!/formAction: *"\/"/.test(read("src/_data/site.yaml"))) todo.push("site.yaml: formAction ist nicht gesetzt — das Formular sendet nirgendwohin");
   if (src.some((f) => /platzhalter-/.test(f))) todo.push("src/img: Platzhalterbilder durch echte Fotos ersetzen");
   if (!existsSync("src/img/og-image.png")) todo.push("src/img: og-image.svg nach PNG rastern und og:image setzen");
