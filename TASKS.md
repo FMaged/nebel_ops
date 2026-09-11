@@ -36,7 +36,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | 5 — Production basics | 6 | 5 |
 | 6 — Images and map | 2 | 0 |
 | 7 — CMS (optional) | 2 | 1 |
-| 8 — Final verification | 6 | 5 |
+| 8 — Final verification | 7 | 6 |
 
 ---
 
@@ -946,6 +946,32 @@ Finally, confirm `_site/` contains nothing but static HTML, CSS, JS, fonts and i
 > - 2026-09-11 — W3C Nu validator run over all 8 pages. First pass found 3 real errors, all now fixed: action="" on the form was invalid (attribute is now omitted entirely when unconfigured, which main.js already handles), a <p> nested inside a <span> in the map block inherited straight from the prototype, and a h1-to-h3 heading skip on impressum. Second pass: 0 errors, 0 warnings across all 8 pages. The 140 remaining info notices are all the trailing-slash-on-void-element style inherited from the prototype, which is harmless. Lighthouse could not be run: no Chrome in this environment, only Firefox.
 
 ---
+
+---
+
+## - [x] T8.7 — Make the checks runnable
+
+**What.** `scripts/check.mjs`, wired to `npm run check` and `npm test`.
+
+**Why.** Added after the fact. The checks in this phase were run by hand from a
+scratch directory that does not survive the session, which means the next person
+gets the plan but not the tools. Eleven checks now run in about a second: contact
+data confined to `site.yaml`, no inline styles, colours only in `tokens.css`, every
+CSS variable resolving and none self-referential, no dead internal links, no
+duplicate IDs, head and accessibility basics per page, valid structured data,
+images carrying dimensions and alt, the reveal rule still gated behind JavaScript,
+and the CMS declaring every key in the data files.
+
+**How.** Plain Node, no dependency. Verified by deliberately reintroducing the
+three real bugs from this session — the self-referential token, an inline style,
+and the ungated `.reveal` — and confirming all three were caught, then restoring.
+A suite that only ever passes is worse than none.
+
+**Done when.** `npm test` builds and reports all checks green, and injecting a
+known bug turns it red.
+
+> **Updates**
+> _none_
 
 ## Out of scope
 

@@ -6,7 +6,9 @@
   "description": "Website der Nebel Lounge, Shisha Lounge in Stuttgart",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "check": "node scripts/check.mjs",
+    "test": "npm run build && npm run check"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
