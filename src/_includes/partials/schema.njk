@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  "name": {{ site.name | dump | safe }},
+  "url": {{ site.url | dump | safe }},
+  "telephone": {{ site.phone.href | replace("tel:", "") | dump | safe }},
+  "email": {{ site.email | dump | safe }},
+  "servesCuisine": "Shisha",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ site.street | dump | safe }},
+    "postalCode": {{ site.postalCode | dump | safe }},
+    "addressLocality": {{ site.city | dump | safe }},
+    "addressCountry": "DE"
+  },
+  "sameAs": [{{ site.instagram.url | dump | safe }}],
+  "openingHoursSpecification": [
+{%- for row in hours | withSchema %}
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": {{ row.schema.dayOfWeek | dump | safe }},
+      "opens": {{ row.schema.opens | dump | safe }},
+      "closes": {{ row.schema.closes | dump | safe }}
+    }{% if not loop.last %},{% endif %}
+{%- endfor %}
+  ]
+}
+</script>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nebel Lounge">
+  <rect width="64" height="64" rx="12" fill="#100818"/>
+  <text x="30" y="46" font-family="Bodoni Moda, Georgia, 'Times New Roman', serif"
+        font-size="44" font-weight="500" fill="#ede4f5" text-anchor="middle">N</text>
+  <circle cx="50" cy="44" r="5" fill="#c08cf5"/>
+</svg>

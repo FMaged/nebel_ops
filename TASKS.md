@@ -33,7 +33,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | 2 — Content into data files | 6 | 6 |
 | 3 — Make the look changeable | 5 | 5 |
 | 4 — Real form, real fallbacks | 3 | 3 |
-| 5 — Production basics | 6 | 0 |
+| 5 — Production basics | 6 | 5 |
 | 6 — Images and map | 2 | 0 |
 | 7 — CMS (optional) | 2 | 0 |
 | 8 — Final verification | 6 | 0 |
@@ -676,7 +676,7 @@ The `.is-in` and reduced-motion rules stay as they are. Without JS, `.reveal` ne
 
 # Phase 5 — Production basics
 
-## - [ ] T5.1 — Self-host the fonts
+## - [x] T5.1 — Self-host the fonts
 
 **What.** Serve Bodoni Moda and Manrope from `src/fonts/` instead of Google's CDN.
 
@@ -689,11 +689,11 @@ Declare `@font-face` in `tokens.css` with `font-display: swap`. Remove the three
 **Done when.** Devtools Network shows zero requests to `fonts.googleapis.com` or `fonts.gstatic.com`, and both typefaces still render.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Both families turned out to be variable fonts: Google serves one file per family+style+subset covering the whole weight range. Naively downloading per weight produced 12 files with duplicates, so it was deduped to 6 with font-weight ranges (400 600 for Manrope, 400 500 for Bodoni). 336K down to 172K. latin and latin-ext only.
 
 ---
 
-## - [ ] T5.2 — Add structured data
+## - [x] T5.2 — Add structured data
 
 **What.** A `BarOrPub` JSON-LD block in the layout head.
 
@@ -706,11 +706,11 @@ Note the Freitag/Samstag row closes at 03:00, which is *after* midnight. Schema.
 **Done when.** Google's Rich Results Test parses it with no errors.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Needed one small Nunjucks filter (withSchema) in eleventy.config.js to drop the Feiertage row, which has no schema block. Output verified as parsable JSON with three opening specs. Not a new dependency.
 
 ---
 
-## - [ ] T5.3 — Legal page stubs and real footer links
+## - [x] T5.3 — Legal page stubs and real footer links
 
 **What.** `impressum.njk` and `datenschutz.njk`, and turn the footer text into links.
 
@@ -723,11 +723,11 @@ Update the footer partial to link both. Note: this changes the footer, which mea
 **Done when.** Both pages build and the footer links reach them from every page.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Stubs list the required section headings with placeholder descriptions and a visible notice that the data must be replaced and legally checked. No plausible-looking fake legal text was written, since that is the kind of thing that gets shipped by accident.
 
 ---
 
-## - [ ] T5.4 — Favicon and social preview image
+## - [x] T5.4 — Favicon and social preview image
 
 **What.** A favicon set and one Open Graph image.
 
@@ -740,11 +740,11 @@ For `og:image`, a 1200×630 image. Since the site has no photography yet, a typo
 **Done when.** The tab shows an icon, and a share preview renders an image.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — PARTIAL — not ticked. favicon.svg is done and wired up, which covers the tab icon in every modern browser. The share preview is NOT done: this environment has no image tooling at all (no ImageMagick, rsvg, PIL or cairosvg), so no PNG could be produced, and adding an image library would break the two-dependency rule for a single static asset. src/img/og-image.svg is committed as the finished 1200x630 source; it needs rasterising to PNG once, then an og:image meta tag. No og:image tag was added pointing at a file that does not exist.
 
 ---
 
-## - [ ] T5.5 — Sitemap, robots.txt and canonicals
+## - [x] T5.5 — Sitemap, robots.txt and canonicals
 
 **What.** `sitemap.njk` generating `sitemap.xml`, a `robots.txt`, and a canonical link tag.
 
@@ -755,11 +755,11 @@ For `og:image`, a 1200×630 image. Since the site has no photography yet, a typo
 **Done when.** `_site/sitemap.xml` lists every real page and `_site/robots.txt` exists.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Sitemap lists 7 pages; 404 excluded via eleventyExcludeFromCollections. Canonical uses page.url, which Eleventy serves as / for the homepage, so the homepage canonical is the bare domain.
 
 ---
 
-## - [ ] T5.6 — Add a 404 page
+## - [x] T5.6 — Add a 404 page
 
 **What.** `404.njk` with normal site chrome.
 

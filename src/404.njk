@@ -1,0 +1,21 @@
+---
+layout: layouts/page.njk
+permalink: /404.html
+eleventyExcludeFromCollections: true
+title: Seite nicht gefunden — Nebel Lounge
+description: Diese Seite gibt es nicht. Zurück zur Startseite oder direkt zur Karte.
+heroKicker: Fehler 404
+heroTitle: "Hier ist<br />nur Nebel."
+heroSub: Die Seite, die du gesucht hast, gibt es nicht mehr — oder hat es nie gegeben.
+---
+
+  <section class="section">
+    <div class="wrap reveal">
+      <h2 class="h-md">Wohin stattdessen?</h2>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="index.html">Zur Startseite</a>
+        <a class="btn btn-outline" href="karte.html">Die Karte</a>
+        <a class="btn btn-outline" href="{{ site.phone.href }}">{{ site.phone.display }}</a>
+      </div>
+    </div>
+  </section>

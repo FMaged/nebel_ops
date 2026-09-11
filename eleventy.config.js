@@ -4,6 +4,10 @@ export default function (eleventyConfig) {
   // Eleventy reads JSON natively but not YAML
   eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 
+  // Öffnungszeiten ohne schema-Block (Feiertage) gehören nicht in die
+  // strukturierten Daten
+  eleventyConfig.addFilter("withSchema", (rows) => rows.filter((r) => r.schema));
+
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/fonts");
