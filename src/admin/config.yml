@@ -1,0 +1,108 @@
+# Sveltia CMS — liest dieselben YAML-Dateien, die auch die Seite baut.
+# Das Format ist Decap-kompatibel, ein Wechsel wäre also nur ein anderes Script.
+#
+# repo muss vor dem ersten Login auf das echte GitHub-Repository zeigen (T7.2).
+backend:
+  name: github
+  repo: BENUTZER/nebel_ops
+  branch: main
+
+media_folder: src/img
+public_folder: img
+
+collections:
+  - name: karte
+    label: Die Karte
+    files:
+      - name: menu
+        label: Sorten und Preise
+        file: src/_data/menu.yaml
+        fields:
+          - name: groups
+            label: Gruppen
+            widget: list
+            label_singular: Gruppe
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Name der Gruppe, widget: string }
+              - { name: hint, label: Preishinweis, widget: string, hint: "Steht rechts neben der Überschrift, z. B. „Kopf 14 – 15 €“" }
+              - { name: onHome, label: Auf der Startseite zeigen, widget: boolean, required: false, default: false }
+              - { name: teaser, label: Kurztext für die Startseite, widget: string, required: false, hint: "Redaktioneller Text — nicht automatisch aus den Sorten erzeugt" }
+              - { name: teaserPrice, label: Preis für die Startseite, widget: string, required: false, hint: "z. B. „ab 14 €“" }
+              - name: items
+                label: Sorten
+                widget: list
+                label_singular: Sorte
+                summary: "{{fields.name}} — {{fields.price}}"
+                fields:
+                  - { name: name,  label: Name, widget: string }
+                  - { name: price, label: Preis, widget: string, hint: "Mit Euro-Zeichen, z. B. „14 €“ oder „5,50 €“" }
+                  - { name: note,  label: Beschreibung, widget: string, required: false }
+                  - { name: flag,  label: Markierung, widget: string, required: false, hint: "„Haus“ für eigene Mischungen, sonst leer lassen" }
+
+  - name: zeiten
+    label: Öffnungszeiten
+    files:
+      - name: hours
+        label: Öffnungszeiten
+        file: src/_data/hours.yaml
+        fields:
+          - name: zeiten
+            label: Zeilen
+            widget: list
+            label_singular: Zeile
+            summary: "{{fields.label}} — {{fields.time}}"
+            fields:
+              - { name: label, label: Tage, widget: string, hint: "z. B. „Montag – Donnerstag“" }
+              - { name: time,  label: Uhrzeit, widget: string, hint: "z. B. „17:00 – 01:00“" }
+              - name: days
+                label: Tagesnummern
+                widget: list
+                required: false
+                field: { name: day, label: Tag, widget: number, value_type: int }
+                hint: "0 = Sonntag bis 6 = Samstag. Markiert den heutigen Tag auf der Seite."
+              - name: schema
+                label: Angaben für Suchmaschinen
+                widget: object
+                required: false
+                collapsed: true
+                hint: "BITTE NICHT ÄNDERN. Wird von Google für die Öffnungszeiten gelesen."
+                fields:
+                  - { name: opens,  label: Öffnet, widget: string }
+                  - { name: closes, label: Schließt, widget: string }
+                  - name: dayOfWeek
+                    label: Wochentage (englisch)
+                    widget: list
+                    field: { name: tag, label: Tag, widget: string }
+
+  - name: kontakt
+    label: Kontaktdaten
+    files:
+      - name: site
+        label: Adresse und Kontakt
+        file: src/_data/site.yaml
+        fields:
+          - { name: name,    label: Name der Lounge, widget: string }
+          - { name: tagline, label: Untertitel, widget: string }
+          - { name: url,     label: Adresse der Website, widget: string }
+          - { name: street,     label: Straße und Hausnummer, widget: string }
+          - { name: postalCode, label: Postleitzahl, widget: string }
+          - { name: city,       label: Stadt, widget: string }
+          - { name: district,   label: Stadtteil, widget: string }
+          - { name: maps,       label: Link zu Google Maps, widget: string }
+          - name: phone
+            label: Telefon
+            widget: object
+            fields:
+              - { name: display, label: Anzeige, widget: string, hint: "So steht es auf der Seite, z. B. „0711 123 456 78“" }
+              - { name: href,    label: Wählbare Nummer, widget: string, hint: "Format: tel:+49711…" }
+          - { name: whatsapp, label: WhatsApp-Link, widget: string }
+          - { name: email,    label: E-Mail, widget: string }
+          - name: instagram
+            label: Instagram
+            widget: object
+            fields:
+              - { name: handle, label: Name, widget: string }
+              - { name: url,    label: Link, widget: string }
+          - { name: ageNotice,  label: Pflichthinweis im Footer, widget: string }
+          - { name: formAction, label: Ziel des Anfrageformulars, widget: string, required: false, hint: "Leer lassen, bis das Hosting feststeht. Solange zeigt das Formular einen Fehler statt einer falschen Bestätigung." }

@@ -16,7 +16,7 @@
   },
   "sameAs": [{{ site.instagram.url | dump | safe }}],
   "openingHoursSpecification": [
-{%- for row in hours | withSchema %}
+{%- for row in hours.zeiten | withSchema %}
     {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": {{ row.schema.dayOfWeek | dump | safe }},

@@ -625,3 +625,30 @@ h2 + .lead                 { margin-top: 20px; }
   margin-bottom: 40px;
 }
 .notice strong { color: var(--text); }
+
+/* Bilder — Seitenverhältnis kommt aus width/height im Markup,
+   deshalb springt beim Laden nichts. */
+.figure { margin: 0; }
+.figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--bg-line);
+  background: var(--bg-soft);
+}
+.figure figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.figure-row {
+  display: grid;
+  gap: 20px;
+  margin-top: 48px;
+}
+@media (min-width: 700px) {
+  .figure-row { grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+}
+.figure-single { margin-top: 40px; max-width: 420px; }

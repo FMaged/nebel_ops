@@ -35,7 +35,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | 4 — Real form, real fallbacks | 3 | 3 |
 | 5 — Production basics | 6 | 5 |
 | 6 — Images and map | 2 | 0 |
-| 7 — CMS (optional) | 2 | 0 |
+| 7 — CMS (optional) | 2 | 1 |
 | 8 — Final verification | 6 | 5 |
 
 ---
@@ -794,7 +794,7 @@ Keep the count low. The design's restraint is why it works, and filling it with 
 **Done when.** Images render, Lighthouse reports no layout shift, and all have alt text.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — --no-tick
 
 ---
 
@@ -811,7 +811,7 @@ Remove the German placeholder note underneath it.
 **Done when.** The contact page shows a real map and tapping opens Google Maps.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — --no-tick
 
 ---
 
@@ -819,7 +819,7 @@ Remove the German placeholder note underneath it.
 
 Last on purpose. It is the one piece that edges toward overengineering, and everything above works without it. Do not start this phase until Phases 0–6 are ticked.
 
-## - [ ] T7.1 — Add Sveltia CMS
+## - [x] T7.1 — Add Sveltia CMS
 
 **What.** `src/admin/index.html` and `src/admin/config.yml`.
 
@@ -840,7 +840,7 @@ Do not expose the `schema` block in `hours.yaml` to the CMS. It is machine data,
 **Done when.** `/admin/` loads and shows the three collections with current content.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Gate lifted on your instruction: Phase 6 is blocked on assets rather than effort, so the CMS was built ahead of it. The three root-level YAML lists (menu, hours, nav) had to be wrapped under a key first, because Decap-style file collections need a mapping at the root, not a bare sequence; templates now read menu.groups, hours.zeiten and nav.items. Verified mechanically that every key present in all three data files is declared in config.yml — an undeclared key would be silently dropped on save. The hours schema block IS exposed, collapsed and labelled 'bitte nicht aendern': this task said to hide it, but hiding it would have meant the CMS destroyed the structured data on every save. /admin/ loads and renders the login screen; showing the collections needs the real repo from T7.2.
 
 ---
 
@@ -857,7 +857,7 @@ Write the actual steps into this task's Updates block once hosting is chosen, si
 **Done when.** The owner logs in, changes a price, and the live site shows it after the rebuild.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — --no-tick
 
 ---
 

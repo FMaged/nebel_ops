@@ -13,7 +13,7 @@
       <div>
         <h3>Seiten</h3>
         <ul>
-{%- for item in nav %}{% if not item.cta %}
+{%- for item in nav.items %}{% if not item.cta %}
           <li><a href="{{ item.href }}">{{ item.label }}</a></li>
 {%- endif %}{% endfor %}
         </ul>

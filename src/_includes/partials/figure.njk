@@ -1,0 +1,9 @@
+{#- Bild mit fester Größe: verhindert Layout-Sprünge beim Laden.
+    width/height sind die echten Pixelmaße der Datei. -#}
+<figure class="figure">
+  <img src="img/{{ bild }}" alt="{{ alt }}" width="{{ w }}" height="{{ h }}"
+       loading="lazy" decoding="async" />
+{%- if bildunterschrift %}
+  <figcaption>{{ bildunterschrift }}</figcaption>
+{%- endif %}
+</figure>

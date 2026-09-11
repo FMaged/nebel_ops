@@ -10,108 +10,109 @@
 #
 # flag: "Haus" markiert die eigenen Mischungen.
 
-- name: Klassiker
-  hint: Kopf 14 – 15 €
-  teaser: Doppelapfel, Traube Minze, Zitrone Minze
-  teaserPrice: "ab 14 €"
-  onHome: true
-  items:
-  - name: Doppelapfel
-    price: "14 €"
-    note: Anis, kräftig, der Klassiker seit immer.
-  - name: Traube Minze
-    price: "14 €"
-    note: Kühl und lang brennend.
-  - name: Zitrone Minze
-    price: "14 €"
-    note: Frisch, leicht säuerlich.
-  - name: Nebel Nr. 1
-    price: "15 €"
-    note: 'Unsere Mischung: Zitrone, Minze, Kaktus.'
-    flag: Haus
-- name: Fruchtig
-  hint: Kopf 15 – 16 €
-  teaser: Passionsfrucht, Melone, Blaubeere
-  teaserPrice: "ab 15 €"
-  onHome: true
-  items:
-  - name: Passionsfrucht
-    price: "15 €"
-    note: Süß, weich, für lange Sessions.
-  - name: Melone Beere
-    price: "15 €"
-    note: Wassermelone mit Blaubeere.
-  - name: Pfirsich Eis
-    price: "16 €"
-    note: Sehr mild, deutlich gekühlt.
-  - name: Nebel Nr. 2
-    price: "16 €"
-    note: Mango, Maracuja, ein Hauch Minze.
-    flag: Haus
-- name: Dark Leaf
-  hint: Kopf 17 – 19 €
-  teaser: Kräftige Blätter, Kohleführung vom Haus
-  teaserPrice: "ab 17 €"
-  onHome: true
-  items:
-  - name: Dark Burley
-    price: "17 €"
-    note: Kräftiges Blatt, nur mit Erfahrung.
-  - name: Schwarze Traube
-    price: "18 €"
-    note: Tief, trocken, wenig süß.
-  - name: Nebel Noir
-    price: "19 €"
-    note: Unsere dunkle Mischung, Kohleführung vom Haus.
-    flag: Haus
-- name: Fruchtkopf
-  hint: 20 Minuten Vorbereitung
-  teaser: In Ananas oder Melone, 20 Minuten Vorbereitung
-  teaserPrice: "ab 22 €"
-  onHome: true
-  items:
-  - name: Ananas
-    price: "22 €"
-    note: Im ausgehöhlten Fruchtkopf, für zwei bis vier.
-  - name: Melone
-    price: "24 €"
-    note: Groß, kühl, hält besonders lange.
-- name: Getränke
-  hint: Ohne Alkohol
-  items:
-  - name: Karak Chai
-    price: "5,50 €"
-    note: Schwarztee mit Milch und Kardamom, Kanne.
-  - name: Minztee
-    price: "5 €"
-    note: Frische Minze, Kanne für zwei.
-  - name: Frisch gepresst
-    price: "5,50 – 7 €"
-    note: Orange, Granatapfel oder Karotte-Ingwer.
-  - name: Hausgemachte Limonade
-    price: "4,50 €"
-    note: Zitrone-Basilikum oder Ingwer-Birne.
-  - name: Mocktails
-    price: "8 – 9,50 €"
-    note: Sechs Signatures, an der Bar geschüttelt.
-  - name: Ayran, Wasser, Softdrinks
-    price: "3 – 4 €"
-    note: 0,33 l.
-- name: Kleine Küche
-  hint: Warm bis Mitternacht
-  items:
-  - name: Mezze für zwei
-    price: "14 €"
-    note: Hummus, Muhammara, Baba Ghanoush, Brot.
-  - name: Halloumi vom Grill
-    price: "8,50 €"
-    note: Mit Granatapfel und Minze.
-  - name: Hähnchenflügel
-    price: "9 €"
-    note: Sechs Stück, mild oder scharf.
-  - name: Pommes mit Knoblauchsauce
-    price: "5,50 €"
-    note: Große Portion zum Teilen.
-  - name: Baklava
-    price: "6 €"
-    note: Drei Stück, dazu Datteln.
+groups:
+  - name: Klassiker
+    hint: Kopf 14 – 15 €
+    teaser: Doppelapfel, Traube Minze, Zitrone Minze
+    teaserPrice: "ab 14 €"
+    onHome: true
+    items:
+    - name: Doppelapfel
+      price: "14 €"
+      note: Anis, kräftig, der Klassiker seit immer.
+    - name: Traube Minze
+      price: "14 €"
+      note: Kühl und lang brennend.
+    - name: Zitrone Minze
+      price: "14 €"
+      note: Frisch, leicht säuerlich.
+    - name: Nebel Nr. 1
+      price: "15 €"
+      note: 'Unsere Mischung: Zitrone, Minze, Kaktus.'
+      flag: Haus
+  - name: Fruchtig
+    hint: Kopf 15 – 16 €
+    teaser: Passionsfrucht, Melone, Blaubeere
+    teaserPrice: "ab 15 €"
+    onHome: true
+    items:
+    - name: Passionsfrucht
+      price: "15 €"
+      note: Süß, weich, für lange Sessions.
+    - name: Melone Beere
+      price: "15 €"
+      note: Wassermelone mit Blaubeere.
+    - name: Pfirsich Eis
+      price: "16 €"
+      note: Sehr mild, deutlich gekühlt.
+    - name: Nebel Nr. 2
+      price: "16 €"
+      note: Mango, Maracuja, ein Hauch Minze.
+      flag: Haus
+  - name: Dark Leaf
+    hint: Kopf 17 – 19 €
+    teaser: Kräftige Blätter, Kohleführung vom Haus
+    teaserPrice: "ab 17 €"
+    onHome: true
+    items:
+    - name: Dark Burley
+      price: "17 €"
+      note: Kräftiges Blatt, nur mit Erfahrung.
+    - name: Schwarze Traube
+      price: "18 €"
+      note: Tief, trocken, wenig süß.
+    - name: Nebel Noir
+      price: "19 €"
+      note: Unsere dunkle Mischung, Kohleführung vom Haus.
+      flag: Haus
+  - name: Fruchtkopf
+    hint: 20 Minuten Vorbereitung
+    teaser: In Ananas oder Melone, 20 Minuten Vorbereitung
+    teaserPrice: "ab 22 €"
+    onHome: true
+    items:
+    - name: Ananas
+      price: "22 €"
+      note: Im ausgehöhlten Fruchtkopf, für zwei bis vier.
+    - name: Melone
+      price: "24 €"
+      note: Groß, kühl, hält besonders lange.
+  - name: Getränke
+    hint: Ohne Alkohol
+    items:
+    - name: Karak Chai
+      price: "5,50 €"
+      note: Schwarztee mit Milch und Kardamom, Kanne.
+    - name: Minztee
+      price: "5 €"
+      note: Frische Minze, Kanne für zwei.
+    - name: Frisch gepresst
+      price: "5,50 – 7 €"
+      note: Orange, Granatapfel oder Karotte-Ingwer.
+    - name: Hausgemachte Limonade
+      price: "4,50 €"
+      note: Zitrone-Basilikum oder Ingwer-Birne.
+    - name: Mocktails
+      price: "8 – 9,50 €"
+      note: Sechs Signatures, an der Bar geschüttelt.
+    - name: Ayran, Wasser, Softdrinks
+      price: "3 – 4 €"
+      note: 0,33 l.
+  - name: Kleine Küche
+    hint: Warm bis Mitternacht
+    items:
+    - name: Mezze für zwei
+      price: "14 €"
+      note: Hummus, Muhammara, Baba Ghanoush, Brot.
+    - name: Halloumi vom Grill
+      price: "8,50 €"
+      note: Mit Granatapfel und Minze.
+    - name: Hähnchenflügel
+      price: "9 €"
+      note: Sechs Stück, mild oder scharf.
+    - name: Pommes mit Knoblauchsauce
+      price: "5,50 €"
+      note: Große Portion zum Teilen.
+    - name: Baklava
+      price: "6 €"
+      note: Drei Stück, dazu Datteln.

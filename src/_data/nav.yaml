@@ -1,16 +1,17 @@
 # Hauptnavigation. Reihenfolge hier = Reihenfolge im Header und im Footer.
 # cta: true rendert den Eintrag als Button und schließt ihn aus der
 # Seitenliste im Footer sowie aus der aria-current-Markierung aus.
-- label: Start
-  href: index.html
-- label: Die Karte
-  href: karte.html
-- label: Über uns
-  href: lounge.html
-- label: Privatfeiern
-  href: events.html
-- label: Kontakt
-  href: kontakt.html
-- label: Tisch reservieren
-  href: kontakt.html
-  cta: true
+items:
+  - label: Start
+    href: index.html
+  - label: Die Karte
+    href: karte.html
+  - label: Über uns
+    href: lounge.html
+  - label: Privatfeiern
+    href: events.html
+  - label: Kontakt
+    href: kontakt.html
+  - label: Tisch reservieren
+    href: kontakt.html
+    cta: true

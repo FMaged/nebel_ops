@@ -1,5 +1,5 @@
       <div class="hours">
-{%- for row in hours %}
+{%- for row in hours.zeiten %}
         <div class="hours-row"{% if row.days %} data-day="{{ row.days | join(",") }}"{% endif %}><span>{{ row.label }}</span><span>{{ row.time }}</span></div>
 {%- endfor %}
       </div>
