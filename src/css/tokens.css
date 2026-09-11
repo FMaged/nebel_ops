@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Nebel Lounge — Design-Tokens
+   DIE Datei zum Umgestalten. Jede Farbe, Schrift, Größe und jeder Abstand
+   steht hier. Außerhalb dieser Datei steht kein fester Farbwert.
+   ========================================================================== */
+
+/* 1. Farben & Variablen ---------------------------------------------------- */
+:root {
+  --bg: #100818;            /* sehr dunkles Pflaumen-Schwarz */
+  --bg-soft: var(--bg-soft);       /* Flächen, Karten */
+  --bg-line: #2a1a3c;       /* Linien, Rahmen */
+  --purple: #7a3bb5;        /* Hauptlila */
+  --purple-light: #c08cf5;  /* Links, Glühen */
+  --brass: #d6a24a;         /* warmer Messing-Akzent, sparsam */
+  --text: #ede4f5;          /* weiches Off-White */
+  --text-dim: #b6a6c6;      /* Nebentext */
+  --text-on-purple: var(--text-on-purple);   /* Schrift auf lila Flächen */      /* Nebentext */
+
+  --font-display: "Bodoni Moda", Georgia, "Times New Roman", serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --header-h: 72px;
+  --header-h-small: 56px;
+  --radius: 14px;      /* weiche Ecken — hier zentral ändern */
+  --radius-sm: 10px;
+  --max: 1120px;
+  --pad: 20px;
+}
+

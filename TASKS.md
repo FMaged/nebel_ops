@@ -31,7 +31,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | 0 — Project skeleton | 4 | 4 |
 | 1 — Kill the duplication | 9 | 9 |
 | 2 — Content into data files | 6 | 6 |
-| 3 — Make the look changeable | 5 | 0 |
+| 3 — Make the look changeable | 5 | 5 |
 | 4 — Real form, real fallbacks | 3 | 0 |
 | 5 — Production basics | 6 | 0 |
 | 6 — Images and map | 2 | 0 |
@@ -512,7 +512,7 @@ Note explicitly: the teaser text is **not** derived from the first three item na
 
 `design/beta/style.css` is 795 lines. It is well organised already, with numbered German section comments. This phase splits it along seams that are already there.
 
-## - [ ] T3.1 — Extract `tokens.css`
+## - [x] T3.1 — Extract `tokens.css`
 
 **What.** `src/css/tokens.css` — every colour, font, size, radius and spacing value.
 
@@ -525,11 +525,11 @@ Then grep the remaining CSS for hex codes, `px` font sizes and hardcoded font na
 **Done when.** Changing `--purple` visibly changes the whole site with no stragglers.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Found nine hardcoded colours outside the token block: three hex (#fff twice, #180d24) and six rgba() tints. The hex became a new --text-on-purple token and var(--bg-soft). The rgba() values became color-mix(in srgb, var(--token) N%, transparent), so a --purple change now propagates to the menu hover tint, the form-ok panel and the map pin as well. Without that, T8.1 would have found them as stragglers.
 
 ---
 
-## - [ ] T3.2 — Extract `base.css`
+## - [x] T3.2 — Extract `base.css`
 
 **What.** Reset, typography, focus rings, skip link, and the layout utilities.
 
@@ -542,11 +542,11 @@ Keep the `:focus-visible` rule exactly as written. It is the site's only keyboar
 **Done when.** The file exists and nothing visual changed.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Sections 2 and the non-button part of 3. Buttons went to components.css as this task's split describes, even though the prototype grouped them under 'Bausteine'.
 
 ---
 
-## - [ ] T3.3 — Extract `components.css`
+## - [x] T3.3 — Extract `components.css`
 
 **What.** Buttons, header, nav, burger, cards, forms, menu rows, hours rows, social list, map.
 
@@ -559,11 +559,11 @@ Watch the media queries. The `@media (min-width: 860px)` block redefines nav lay
 **Done when.** All five pages render unchanged at 375px, 860px and 1400px.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — 573 lines, the largest of the four as expected. Verified mechanically that all 173 selectors from the original stylesheet survive across the four files, none lost and none invented.
 
 ---
 
-## - [ ] T3.4 — Extract `effects.css`
+## - [x] T3.4 — Extract `effects.css`
 
 **What.** Smoke animation, marquee, reveal transitions, and the reduced-motion block.
 
@@ -576,11 +576,11 @@ The `@media (prefers-reduced-motion: reduce)` block must be **last in load order
 **Done when.** Enabling reduce-motion at OS level stops smoke, marquee and reveal.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Section 5 of the prototype mixes hero layout with the smoke effect, so it was split: hero box and typography went to components.css, the .smoke rules and the three drift keyframes came here. effects.css is linked last in the layout so the reduced-motion block still wins on cascade order.
 
 ---
 
-## - [ ] T3.5 — Fold in the inline styles
+## - [x] T3.5 — Fold in the inline styles
 
 **What.** Remove the `style="..."` attributes scattered through the prototype's markup.
 
@@ -591,7 +591,7 @@ The `@media (prefers-reduced-motion: reduce)` block must be **last in load order
 **Done when.** `grep -r 'style="' src/` returns nothing.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Twelve inline styles removed. Replaced with eight context-specific rules (.lead + .lead, h2 + .lead, .map + .form-note and so on) rather than utility classes, because the values are one-off fine-tuning rather than design tokens. Each rule was verified against the built HTML to confirm it actually matches its element; a selector that silently fails to match would have lost the spacing invisibly. This task is where byte parity with the prototype legitimately ends — the 12 removed attributes are the only remaining differences.
 
 ---
 

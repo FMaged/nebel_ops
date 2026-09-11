@@ -1,125 +1,8 @@
 /* ==========================================================================
-   Nebel Lounge — gemeinsames Stylesheet
-   Aufbau:
-   1. Farben & Variablen
-   2. Grundlagen (Reset, Typografie, Fokus)
-   3. Bausteine (Buttons, Labels, Abschnitte)
-   4. Header & Navigation (inkl. mobiles Menü)
-   5. Hero + Rauch-Animation
-   6. Marquee
-   7. Inhaltsblöcke der Startseite
-   8. Footer
-   9. Bewegung / prefers-reduced-motion
+   Nebel Lounge — Komponenten
+   Buttons, Header, Navigation, Hero, Inhaltsblöcke, Footer, Karte,
+   Über uns, Formular, Kontakt. Hier steht, wie die Dinge aussehen.
    ========================================================================== */
-
-/* 1. Farben & Variablen ---------------------------------------------------- */
-:root {
-  --bg: #100818;            /* sehr dunkles Pflaumen-Schwarz */
-  --bg-soft: #180d24;       /* Flächen, Karten */
-  --bg-line: #2a1a3c;       /* Linien, Rahmen */
-  --purple: #7a3bb5;        /* Hauptlila */
-  --purple-light: #c08cf5;  /* Links, Glühen */
-  --brass: #d6a24a;         /* warmer Messing-Akzent, sparsam */
-  --text: #ede4f5;          /* weiches Off-White */
-  --text-dim: #b6a6c6;      /* Nebentext */
-
-  --font-display: "Bodoni Moda", Georgia, "Times New Roman", serif;
-  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-
-  --header-h: 72px;
-  --header-h-small: 56px;
-  --radius: 14px;      /* weiche Ecken — hier zentral ändern */
-  --radius-sm: 10px;
-  --max: 1120px;
-  --pad: 20px;
-}
-
-/* 2. Grundlagen ------------------------------------------------------------ */
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-img { max-width: 100%; display: block; }
-
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: -0.01em;
-  margin: 0;
-}
-
-p { margin: 0; }
-
-a { color: var(--purple-light); text-decoration: none; }
-a:hover { color: var(--text); text-decoration: underline; }
-
-/* Sichtbarer Tastatur-Fokus überall */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--brass);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
-/* Sprunglink für Screenreader / Tastatur */
-.skip {
-  position: absolute;
-  left: -9999px;
-  top: 8px;
-  z-index: 100;
-  background: var(--purple);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: var(--radius-sm);
-}
-.skip:focus { left: 8px; }
-
-/* 3. Bausteine ------------------------------------------------------------- */
-.wrap {
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 var(--pad);
-}
-
-.section { padding: 72px 0; }
-
-.section-line { border-top: 1px solid var(--bg-line); }
-
-/* kleines Label über Überschriften */
-.label {
-  display: block;
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--brass);
-  margin-bottom: 18px;
-}
-
-.lead {
-  font-size: 18px;
-  color: var(--text-dim);
-  max-width: 60ch;
-}
-
-.h-xl { font-size: clamp(44px, 15vw, 132px); }
-.h-lg { font-size: clamp(34px, 9vw, 68px); }
-.h-md { font-size: clamp(26px, 6vw, 40px); }
 
 /* Buttons */
 .btn {
@@ -140,9 +23,9 @@ select:focus-visible {
 
 .btn-primary {
   background: var(--purple);
-  color: #fff;
+  color: var(--text-on-purple);
 }
-.btn-primary:hover { background: var(--purple-light); color: #180d24; text-decoration: none; }
+.btn-primary:hover { background: var(--purple-light); color: var(--bg-soft); text-decoration: none; }
 
 .btn-outline {
   background: transparent;
@@ -173,7 +56,7 @@ select:focus-visible {
 /* Zustand nach dem Scrollen — main.js setzt die Klasse */
 .header.is-scrolled {
   height: var(--header-h-small);
-  background: rgba(16, 8, 24, 0.82);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
   backdrop-filter: blur(14px);
   border-bottom-color: var(--bg-line);
 }
@@ -202,7 +85,7 @@ select:focus-visible {
 .nav {
   position: fixed;
   inset: var(--header-h) 0 auto 0;
-  background: rgba(16, 8, 24, 0.97);
+  background: color-mix(in srgb, var(--bg) 97%, transparent);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--bg-line);
   border-radius: 0 0 var(--radius) var(--radius);
@@ -302,7 +185,7 @@ select:focus-visible {
   .nav-cta { display: inline-flex; }
 }
 
-/* 5. Hero + Rauch --------------------------------------------------------- */
+
 .hero {
   position: relative;
   display: flex;
@@ -320,64 +203,15 @@ select:focus-visible {
 
 .hero-inner { position: relative; z-index: 2; width: 100%; }
 
-/* Rauch: große, weiche Formen, die langsam driften.
-   Reines CSS — kein Video, keine Bilddatei. */
-.smoke {
-  position: absolute;
-  inset: -20%;
-  z-index: 0;
-  pointer-events: none;
-}
-.smoke b {
-  position: absolute;
-  display: block;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.5;
-  will-change: transform;
-}
-.smoke b:nth-child(1) {
-  width: 70vw; height: 70vw;
-  left: -10vw; top: 0;
-  background: radial-gradient(circle at 40% 40%, var(--purple), transparent 68%);
-  animation: drift-a 34s ease-in-out infinite alternate;
-}
-.smoke b:nth-child(2) {
-  width: 60vw; height: 60vw;
-  right: -12vw; top: 18%;
-  background: radial-gradient(circle at 50% 50%, var(--purple-light), transparent 66%);
-  opacity: 0.3;
-  animation: drift-b 44s ease-in-out infinite alternate;
-}
-.smoke b:nth-child(3) {
-  width: 46vw; height: 46vw;
-  left: 28%; bottom: -12%;
-  background: radial-gradient(circle at 50% 50%, var(--brass), transparent 62%);
-  opacity: 0.16;
-  animation: drift-c 52s ease-in-out infinite alternate;
-}
-
 /* dunkler Verlauf, damit die Schrift immer lesbar bleibt */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(16,8,24,0.55) 0%, rgba(16,8,24,0.35) 45%, var(--bg) 100%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 55%, transparent) 0%, color-mix(in srgb, var(--bg) 35%, transparent) 45%, var(--bg) 100%);
 }
 
-@keyframes drift-a {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to   { transform: translate3d(12vw, -8vh, 0) scale(1.25); }
-}
-@keyframes drift-b {
-  from { transform: translate3d(0, 0, 0) scale(1.1); }
-  to   { transform: translate3d(-14vw, 10vh, 0) scale(0.9); }
-}
-@keyframes drift-c {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to   { transform: translate3d(8vw, -14vh, 0) scale(1.3); }
-}
 
 .hero-kicker {
   font-size: 12px;
@@ -408,37 +242,6 @@ select:focus-visible {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-dim);
-}
-
-/* 6. Marquee -------------------------------------------------------------- */
-.marquee {
-  border-top: 1px solid var(--bg-line);
-  border-bottom: 1px solid var(--bg-line);
-  overflow: hidden;
-  padding: 18px 0;
-  background: var(--bg-soft);
-  border-radius: var(--radius);
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 38s linear infinite;
-}
-.marquee-track span {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 5vw, 34px);
-  padding-right: 40px;
-  white-space: nowrap;
-  color: var(--text);
-}
-.marquee-track span i {
-  font-style: normal;
-  color: var(--brass);
-  padding-right: 40px;
-}
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
 }
 
 /* 7. Inhaltsblöcke -------------------------------------------------------- */
@@ -596,7 +399,7 @@ select:focus-visible {
   border-bottom: 1px solid var(--bg-line);
   transition: background 0.25s;
 }
-.menu-item:hover { background: rgba(122, 59, 181, 0.1); }
+.menu-item:hover { background: color-mix(in srgb, var(--purple) 10%, transparent); }
 .menu-item-name {
   font-family: var(--font-display);
   font-size: clamp(22px, 5vw, 30px);
@@ -718,7 +521,7 @@ select:focus-visible {
   padding: 22px 24px;
   border: 1px solid var(--purple);
   border-radius: var(--radius);
-  background: rgba(122, 59, 181, 0.14);
+  background: color-mix(in srgb, var(--purple) 14%, transparent);
   max-width: 620px;
 }
 .form-ok.is-visible { display: block; }
@@ -751,7 +554,7 @@ select:focus-visible {
   height: 16px;
   border-radius: 50%;
   background: var(--brass);
-  box-shadow: 0 0 0 8px rgba(214, 162, 74, 0.18);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--brass) 18%, transparent);
   margin: 0 auto 14px;
 }
 .map p { font-size: 14px; color: var(--text-dim); }
@@ -775,21 +578,17 @@ select:focus-visible {
 .social a:hover { color: var(--purple-light); text-decoration: none; }
 .social a span:last-child { color: var(--text-dim); font-size: 14px; }
 
-/* 9. Bewegung ------------------------------------------------------------- */
-/* Abschnitte gleiten beim Scrollen herein. main.js setzt .is-in. */
-.reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.is-in { opacity: 1; transform: none; }
 
-/* Alles aus, wenn der Nutzer weniger Bewegung möchte */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .smoke b,
-  .marquee-track { animation: none !important; }
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .header { transition: none; }
-  .btn { transition: none; }
-}
+/* Abstände, die vorher als style="" im Markup standen.
+   Kontextbezogen statt als Hilfsklassen — die Werte sind Feinschliff,
+   keine Design-Tokens. */
+.lead + .lead              { margin-top: 18px; }
+h2 + .lead                 { margin-top: 20px; }
+.menu-notes + .lead        { margin-top: 28px; }
+.contact-block p + .form-note { margin-top: 10px; }
+.btn + .form-note          { margin-top: 14px; }
+.map + .form-note          { margin-top: 16px; }
+.form-ok .form-note        { margin-top: 8px; }
+
+/* gleiche Auszeichnung wie im Hero */
+.cta h2 em { font-style: italic; color: var(--purple-light); }
