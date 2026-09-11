@@ -32,7 +32,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | 1 — Kill the duplication | 9 | 9 |
 | 2 — Content into data files | 6 | 6 |
 | 3 — Make the look changeable | 5 | 5 |
-| 4 — Real form, real fallbacks | 3 | 0 |
+| 4 — Real form, real fallbacks | 3 | 3 |
 | 5 — Production basics | 6 | 0 |
 | 6 — Images and map | 2 | 0 |
 | 7 — CMS (optional) | 2 | 0 |
@@ -597,7 +597,7 @@ The `@media (prefers-reduced-motion: reduce)` block must be **last in load order
 
 # Phase 4 — Real form, real fallbacks
 
-## - [ ] T4.1 — Make the enquiry form actually submit
+## - [x] T4.1 — Make the enquiry form actually submit
 
 **What.** A real `method="POST"` form on the Privatfeiern page.
 
@@ -624,11 +624,11 @@ Drop `novalidate` so the browser validates natively when JS is off.
 **Done when.** With JS disabled, submitting posts to the configured action and the browser enforces required fields.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Form is now a real POST with a honeypot, and novalidate is gone so the browser enforces required fields. site.formAction is still empty because hosting is undecided, so submissions are NOT delivered anywhere yet — this is the one thing blocking real use, and it is a one-line change in site.yaml once the host is picked.
 
 ---
 
-## - [ ] T4.2 — Turn the JS into progressive enhancement
+## - [x] T4.2 — Turn the JS into progressive enhancement
 
 **What.** Rewrite the form handler in `main.js` to enhance rather than replace.
 
@@ -643,11 +643,11 @@ Everything else in `main.js` — burger menu, scroll header, reveal observer, to
 **Done when.** Submitting with JS on shows the inline confirmation and the data actually arrives.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Rewritten to send via fetch. Added a #anfrage-fehler block with the phone number and WhatsApp link, shown on network failure AND when no endpoint is configured — the original bug was showing a confirmation for a submission that went nowhere, so failing loudly is the point. Submit button disables while sending. The existing focus management on the confirmation was kept.
 
 ---
 
-## - [ ] T4.3 — Fix the reveal-without-JS failure
+## - [x] T4.3 — Fix the reveal-without-JS failure
 
 **What.** Gate the `.reveal` opacity rule behind a `js` class on `<html>`.
 
@@ -670,7 +670,7 @@ The `.is-in` and reduced-motion rules stay as they are. Without JS, `.reveal` ne
 **Done when.** With JS disabled in devtools, every page is fully readable.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Gating .reveal behind html.js introduced a cascade bug this task did not anticipate: html.js .reveal has higher specificity than the plain .reveal override in the prefers-reduced-motion block, so the override silently stopped winning. Fixed by giving the reduced-motion rule the same html.js prefix. Exactly the Phase 3 cascade risk the verify skill warns about.
 
 ---
 

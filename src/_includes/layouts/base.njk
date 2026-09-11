@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+{# setzt .js, bevor CSS lädt — siehe html.js .reveal in effects.css #}
+<script>document.documentElement.className += " js";</script>
 <title>{{ title | safe }}</title>
 <meta name="description" content="{{ description | safe }}" />
 {%- if ogDescription %}

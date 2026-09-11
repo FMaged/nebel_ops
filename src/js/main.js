@@ -73,21 +73,47 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
 }
 
 /* 3b. Anfrageformular (events.html) --------------------------------------- */
-// Kein Server dahinter: wir prüfen die Pflichtfelder und zeigen eine Bestätigung.
+// Das Formular ist ein echtes POST-Formular und funktioniert auch ohne
+// JavaScript. Mit JavaScript schicken wir es im Hintergrund und zeigen die
+// Bestätigung direkt auf der Seite, ohne Seitenwechsel.
 var form = document.querySelector("#anfrage");
 var formOk = document.querySelector("#anfrage-ok");
+var formError = document.querySelector("#anfrage-fehler");
 
-if (form && formOk) {
+function zeige(box) {
+  box.classList.add("is-visible");
+  box.setAttribute("tabindex", "-1");
+  box.focus();
+}
+
+if (form && formOk && formError) {
   form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
+    // Ohne novalidate feuert submit nur, wenn der Browser das Formular
+    // für gültig hält — eigene Prüfung ist nicht nötig.
+    var ziel = form.getAttribute("action");
+
+    if (!ziel) {
+      // Kein Endpunkt hinterlegt (site.yaml: formAction). Lieber ehrlich
+      // scheitern als eine Bestätigung zeigen, der nichts folgt.
+      e.preventDefault();
+      zeige(formError);
       return;
     }
-    form.style.display = "none";
-    formOk.classList.add("is-visible");
-    formOk.setAttribute("tabindex", "-1");
-    formOk.focus();
+
+    e.preventDefault();
+    var senden = form.querySelector("button[type=submit]");
+    if (senden) { senden.disabled = true; }
+
+    fetch(ziel, { method: "POST", body: new FormData(form) })
+      .then(function (antwort) {
+        if (!antwort.ok) { throw new Error(antwort.status); }
+        form.hidden = true;
+        zeige(formOk);
+      })
+      .catch(function () {
+        if (senden) { senden.disabled = false; }
+        zeige(formError);
+      });
   });
 }
 

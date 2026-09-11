@@ -592,3 +592,25 @@ h2 + .lead                 { margin-top: 20px; }
 
 /* gleiche Auszeichnung wie im Hero */
 .cta h2 em { font-style: italic; color: var(--purple-light); }
+
+/* Spam-Falle im Anfrageformular — für Menschen unsichtbar, für Bots nicht */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Fehlermeldung des Anfrageformulars — wie .form-ok, nur in Messing */
+.form-error {
+  display: none;
+  margin-top: 28px;
+  padding: 22px 24px;
+  border: 1px solid var(--brass);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--brass) 12%, transparent);
+  max-width: 620px;
+}
+.form-error.is-visible { display: block; }
+.form-error .form-note { margin-top: 8px; }
