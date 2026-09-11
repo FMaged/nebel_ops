@@ -1,0 +1,28 @@
+{%- set navItems = [
+  { label: "Start",            href: "index.html"   },
+  { label: "Die Karte",        href: "karte.html"   },
+  { label: "Über uns",         href: "lounge.html"  },
+  { label: "Privatfeiern",     href: "events.html"  },
+  { label: "Kontakt",          href: "kontakt.html" },
+  { label: "Tisch reservieren", href: "kontakt.html", cta: true }
+] -%}
+{#- Eleventy serves /index.html as /, so normalise before comparing #}
+{%- set here = "/index.html" if page.url == "/" else page.url -%}
+<!-- ===== Header (auf jeder Seite gleich) ===== -->
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Nebel<span>.</span></a>
+
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen">
+      <i></i><i></i><i></i>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <ul>
+{%- for item in navItems %}
+        <li><a{% if item.cta %} class="btn btn-primary nav-cta"{% endif %} href="{{ item.href }}"{% if not item.cta and here == "/" + item.href %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+{%- endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

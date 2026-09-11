@@ -1,0 +1,106 @@
+---
+layout: "layouts/page.njk"
+permalink: "/events.html"
+title: "Privatfeiern — Nebel Lounge Stuttgart"
+description: "Geburtstage, Firmenabende und Gruppen ab 10 Personen in der Nebel Lounge Stuttgart. Jetzt anfragen."
+heroKicker: "Privatfeiern"
+heroTitle: "Deine Runde,<br />unser Raum."
+heroSub: "Geburtstage, Firmenabende und Gruppen ab zehn Personen. Wir stellen um, du sagst nur, wann."
+---
+
+  <section class="section">
+    <div class="wrap grid-2 reveal">
+      <div>
+        <span class="label">Gruppen ab 10 Personen</span>
+        <h2 class="h-lg">Wir stellen<br />den Raum um.</h2>
+      </div>
+      <div>
+        <p class="lead">
+          Für Geburtstage, Firmenabende und alles, was länger als zwei Stunden
+          dauert: Wir schieben die Tische zusammen, reservieren eine eigene
+          Ecke und stimmen Karte und Service vorher mit dir ab.
+        </p>
+        <p class="lead" style="margin-top:18px">
+          Die obere Ebene lässt sich komplett buchen — 24 Plätze, eigener
+          Zugang, eigene Bedienung. Ab 40 Personen gehört die ganze Lounge dir.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-line">
+    <div class="wrap reveal">
+      <span class="label">Drei Formate</span>
+      <h2 class="h-md">Was wir vorbereiten</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Geburtstag</h3>
+          <p>Ab 10 Personen. Eigene Ecke, Tischdeko in Lila und Messing, Kuchen darf mitgebracht werden. Auf Wunsch Köpfe im Wechsel für den Tisch.</p>
+        </div>
+        <div class="card">
+          <h3>Firmenabend</h3>
+          <p>Ab 12 Personen. Feste Getränkepauschale, Mezze-Platten für den Tisch, eine Rechnung am Ende. Musik leiser als sonst, damit man sich hört.</p>
+        </div>
+        <div class="card">
+          <h3>Ganze Lounge</h3>
+          <p>Ab 40 Personen. Exklusiv, eigener DJ oder eigene Playlist, Zeiten nach Absprache — auch außerhalb der normalen Öffnungszeiten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-line">
+    <div class="wrap grid-2 reveal">
+      <div>
+        <span class="label">Gut zu wissen</span>
+        <h2 class="h-md">Der Ablauf</h2>
+      </div>
+      <div>
+        <ul class="rules">
+          <li><b>01</b><span>Anfrage schicken — je früher, desto besser. Freitag und Samstag sind oft drei Wochen vorher weg.</span></li>
+          <li><b>02</b><span>Wir melden uns innerhalb eines Tages telefonisch oder per WhatsApp.</span></li>
+          <li><b>03</b><span>Ab 20 Personen bitten wir um eine Anzahlung von 10 € pro Person.</span></li>
+          <li><b>04</b><span>Absage bis 48 Stunden vorher kostenfrei.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-line">
+    <div class="wrap reveal">
+      <span class="label">Anfrage</span>
+      <h2 class="h-md">Erzähl uns von<br />deinem Abend.</h2>
+
+      <form class="form" id="anfrage" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="telefon">Telefon</label>
+          <input id="telefon" name="telefon" type="tel" autocomplete="tel" required />
+        </div>
+        <div class="field">
+          <label for="datum">Datum</label>
+          <input id="datum" name="datum" type="date" required />
+        </div>
+        <div class="field">
+          <label for="personen">Personen</label>
+          <input id="personen" name="personen" type="number" min="10" max="60" step="1" required />
+        </div>
+        <div class="field full">
+          <label for="nachricht">Nachricht</label>
+          <textarea id="nachricht" name="nachricht" placeholder="Anlass, Uhrzeit, Wünsche zur Karte …"></textarea>
+        </div>
+        <div class="full">
+          <button class="btn btn-primary" type="submit">Anfrage senden</button>
+          <p class="form-note" style="margin-top:14px">Wir antworten innerhalb eines Tages. Die Anfrage ist noch keine Reservierung.</p>
+        </div>
+      </form>
+
+      <div class="form-ok" id="anfrage-ok" role="status">
+        <strong>Danke — deine Anfrage ist notiert.</strong>
+        <p class="form-note" style="margin-top:8px">Wir melden uns innerhalb eines Tages zur Bestätigung. Wenn es schneller gehen soll: <a href="tel:+4971112345678">0711 123 456 78</a>.</p>
+      </div>
+    </div>
+  </section>

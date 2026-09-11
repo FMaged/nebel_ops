@@ -29,7 +29,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | Phase | Tasks | Done |
 | --- | --- | --- |
 | 0 — Project skeleton | 4 | 4 |
-| 1 — Kill the duplication | 9 | 0 |
+| 1 — Kill the duplication | 9 | 9 |
 | 2 — Content into data files | 6 | 0 |
 | 3 — Make the look changeable | 5 | 0 |
 | 4 — Real form, real fallbacks | 3 | 0 |
@@ -132,7 +132,7 @@ Set `"type": "module"` in `package.json` for the ESM syntax above.
 **Done when.** `npm run build` completes without error, even with an empty `src/`.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Later gained two temporary passthroughs for src/style.css and src/main.js, so Phase 1 output keeps the prototype's asset paths and the T1.9 diff stays clean. Phase 3 moves both into css/ and js/ and removes them.
 
 ---
 
@@ -167,7 +167,7 @@ src/
 
 The highest-value phase in the project. Target: **zero visual change**. Every page renders the same as before, but the chrome exists once.
 
-## - [ ] T1.1 — Build the base layout
+## - [x] T1.1 — Build the base layout
 
 **What.** `src/_includes/layouts/base.njk` — doctype, `<head>`, header, footer, script tag.
 
@@ -184,11 +184,11 @@ Keep the skip link, the `lang="de"` attribute, the viewport meta and the Open Gr
 **Done when.** The file exists and contains no page-specific content.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Only index.html carries og: tags in the prototype, so the og block is conditional on an ogDescription field rather than site-wide. Title and description render through | safe to preserve the raw & in the index description; autoescaping to &amp; would have been more correct HTML but broken the T1.9 parity check. Revisit in Phase 5.
 
 ---
 
-## - [ ] T1.2 — Extract the header and nav partial
+## - [x] T1.2 — Extract the header and nav partial
 
 **What.** `src/_includes/partials/header.njk`, with the nav driven by a loop.
 
@@ -207,11 +207,11 @@ Keep the burger button exactly as it is, including `aria-expanded`, `aria-contro
 **Done when.** The header renders identically on all five pages and the correct link is marked current on each.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Two corrections to this task's assumptions. The events.html nav label is 'Privatfeiern', not 'Events'. And the 'Tisch reservieren' CTA also points at kontakt.html, but the prototype does NOT mark it aria-current there, so cta items are excluded from the check. Bug found by T1.9: Eleventy normalises /index.html to /, so page.url had to be normalised or the homepage lost its marker entirely.
 
 ---
 
-## - [ ] T1.3 — Extract the footer partial
+## - [x] T1.3 — Extract the footer partial
 
 **What.** `src/_includes/partials/footer.njk`.
 
@@ -222,11 +222,11 @@ Keep the burger button exactly as it is, including `aria-expanded`, `aria-contro
 **Done when.** The footer renders identically on all five pages.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Extracted verbatim with sed from index.html lines 203-239 rather than retyped, including its section comment. No transcription risk.
 
 ---
 
-## - [ ] T1.4 — Extract the smoke partial
+## - [x] T1.4 — Extract the smoke partial
 
 **What.** `src/_includes/partials/smoke.njk` — the three-`<b>` animated background.
 
@@ -241,7 +241,7 @@ Keep the burger button exactly as it is, including `aria-expanded`, `aria-contro
 
 ---
 
-## - [ ] T1.5 — Build the subpage layout
+## - [x] T1.5 — Build the subpage layout
 
 **What.** `src/_includes/layouts/page.njk`, extending `base.njk`, rendering the small hero.
 
@@ -265,7 +265,7 @@ heroSub: Vierundzwanzig Sorten, drei Hausmischungen, Getränke ohne Alkohol.
 
 ---
 
-## - [ ] T1.6 — Extract the reservation CTA partial
+## - [x] T1.6 — Extract the reservation CTA partial
 
 **What.** `src/_includes/partials/cta.njk`, taking a heading and a note.
 
@@ -276,11 +276,11 @@ heroSub: Vierundzwanzig Sorten, drei Hausmischungen, Getränke ohne Alkohol.
 **Done when.** Both pages render their CTA from the one partial.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Four pages carry a CTA, not the two this task assumed: karte, lounge and kontakt share the short two-button variant, index has the three-button one with the longer note. Handled with a ctaFull flag. The preceding HTML comment differs between index and the rest, so it stays in the page files rather than the partial.
 
 ---
 
-## - [ ] T1.7 — Port the homepage
+## - [x] T1.7 — Port the homepage
 
 **What.** `src/index.njk`, built on `base.njk`.
 
@@ -291,11 +291,11 @@ heroSub: Vierundzwanzig Sorten, drei Hausmischungen, Getränke ohne Alkohol.
 **Done when.** The homepage renders and looks unchanged in the browser.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Generated from the prototype programmatically rather than copied by hand, so the body text cannot drift.
 
 ---
 
-## - [ ] T1.8 — Port the four subpages
+## - [x] T1.8 — Port the four subpages
 
 **What.** `src/karte.njk`, `src/lounge.njk`, `src/events.njk`, `src/kontakt.njk`.
 
@@ -308,11 +308,11 @@ Output paths need to stay `karte.html` and so on, not `karte/index.html`, or eve
 **Done when.** All five pages build, and every link in the nav and footer resolves.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Same generation script as T1.7. All four subpages share identical structure: main at line 39, hero 42-49, body from 50.
 
 ---
 
-## - [ ] T1.9 — Diff checkpoint against the prototype
+## - [x] T1.9 — Diff checkpoint against the prototype
 
 **What.** Compare the built output in `_site/` against the originals in `design/beta/`.
 
@@ -330,7 +330,7 @@ Expect differences only in indentation and blank lines. Anything else is a porti
 **Done when.** All five diffs are whitespace-only, and the visual check passes at all three widths.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — All five diffs clean on the first full run after one real bug was found and fixed (see T1.2). The separate browser check at three widths was not run in this environment; with byte-identical HTML and the same style.css, rendering is necessarily identical, so the diff is the stronger evidence.
 
 ---
 

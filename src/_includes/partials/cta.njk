@@ -1,0 +1,22 @@
+  <section class="cta">
+    {% include "partials/smoke.njk" %}
+    <div class="wrap cta-inner reveal">
+      <span class="label">Reservierung</span>
+      <h2 class="h-lg">Sag uns, wann —<br />wir stopfen den<br /><em style="font-style: italic; color: var(--purple-light)">ersten Kopf.</em></h2>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="tel:+4971112345678">0711 123 456 78</a>
+        <a class="btn btn-outline" href="https://wa.me/4971112345678">WhatsApp</a>
+{%- if ctaFull %}
+        <a class="btn btn-outline" href="kontakt.html">Anfrage senden</a>
+{%- endif %}
+      </div>
+{%- if ctaFull %}
+      <p class="cta-note">
+        Ab 10 Personen bitte einen Tag vorher melden — dann stellen wir den
+        Raum um. Größere Feiern: <a href="events.html">Privatfeiern</a>.
+      </p>
+{%- else %}
+      <p class="cta-note">Ab 10 Personen bitte einen Tag vorher melden.</p>
+{%- endif %}
+    </div>
+  </section>

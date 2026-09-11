@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+---
+  <!-- ===== Kleiner Hero (nur die Startseite ist voll hoch) ===== -->
+  <section class="hero hero-small">
+    {% include "partials/smoke.njk" %}
+    <div class="wrap hero-inner">
+      <p class="hero-kicker">{{ heroKicker }}</p>
+      <h1 class="h-lg">{{ heroTitle | safe }}</h1>
+      <p class="hero-sub">{{ heroSub | safe }}</p>
+    </div>
+  </section>
+{{ content | safe }}
