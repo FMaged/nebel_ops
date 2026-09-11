@@ -1,0 +1,15 @@
+{
+  "name": "nebel-lounge",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Website der Nebel Lounge, Shisha Lounge in Stuttgart",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "js-yaml": "^4.1.0"
+  }
+}

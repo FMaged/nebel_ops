@@ -28,7 +28,7 @@ New tasks get the next free number in their phase and are appended, never insert
 
 | Phase | Tasks | Done |
 | --- | --- | --- |
-| 0 — Project skeleton | 4 | 0 |
+| 0 — Project skeleton | 4 | 4 |
 | 1 — Kill the duplication | 9 | 0 |
 | 2 — Content into data files | 6 | 0 |
 | 3 — Make the look changeable | 5 | 0 |
@@ -54,7 +54,7 @@ These are not tasks. They are constraints that apply to every task.
 
 # Phase 0 — Project skeleton
 
-## - [ ] T0.1 — Initialise the git repository
+## - [x] T0.1 — Initialise the git repository
 
 **What.** Run `git init` at `/home/vboxuser/projects/nebel_ops/` and add a `.gitignore`.
 
@@ -65,11 +65,11 @@ These are not tasks. They are constraints that apply to every task.
 **Done when.** `git log` shows one commit and `git status` is clean.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Commit message follows the git-conventions house skill (Conventional Commits, single line, sentence case) rather than the 'Initial commit: design prototype' text suggested here. Also branched to feature/no-ref/eleventy-site-build for the build work; main holds the untouched baseline.
 
 ---
 
-## - [ ] T0.2 — Create `package.json` and install dependencies
+## - [x] T0.2 — Create `package.json` and install dependencies
 
 **What.** A `package.json` at the repo root with two dependencies and two scripts.
 
@@ -97,11 +97,11 @@ Run `npm install`. Nothing else gets added here. If a task later seems to need a
 **Done when.** `npx eleventy --version` prints a 3.x version.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Eleventy resolved to 3.1.6, js-yaml to 4.1.0. Node 24.21.0.
 
 ---
 
-## - [ ] T0.3 — Write `eleventy.config.js`
+## - [x] T0.3 — Write `eleventy.config.js`
 
 **What.** The Eleventy config. Roughly fifteen lines.
 
@@ -136,7 +136,7 @@ Set `"type": "module"` in `package.json` for the ESM syntax above.
 
 ---
 
-## - [ ] T0.4 — Create the folder skeleton
+## - [x] T0.4 — Create the folder skeleton
 
 **What.** The empty directory structure under `src/`.
 
