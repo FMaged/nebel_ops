@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-def32808-3e75-45b8-991f-e13c7a4e83bd/styles.css">
+<script src="_ds/modernist-def32808-3e75-45b8-991f-e13c7a4e83bd/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
+<style>
+  body { margin: 0; text-wrap: pretty; }
+  a { color: var(--color-accent-700); text-decoration: none; }
+  a:hover { color: var(--color-accent); text-decoration: underline; }
+  html { scroll-behavior: smooth; }
+</style>
+</helmet>
+
+<div style="background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); min-height: 100vh">
+
+  <nav class="nav" style="position: sticky; top: 0; z-index: 20; background: var(--color-bg)">
+    <span class="nav-brand">{{ barName }}</span>
+    <a href="#menu">Menu</a>
+    <a href="#room">The room</a>
+    <a href="#visit">Visit</a>
+    <a class="btn btn-primary" href="#reserve">Reserve a table</a>
+  </nav>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 84px clamp(20px, 5vw, 72px) 56px">
+    <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(42px, 6.4vw, 88px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 0 -0.058em">
+      <span style="display: block">Coal, smoke, and</span>
+      <span style="display: block">a long evening.</span>
+    </h1>
+    <p style="font-size: 17px; line-height: 28px; max-width: 56ch; margin: 32px 0 0">A shisha lounge built for sitting still: deep leather, low light, and a rotation of tobacco we mix and pack ourselves. Open late, every night of the week.</p>
+    <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 28px">
+      <a class="btn btn-primary" href="#reserve">Reserve a table</a>
+      <a class="btn btn-ghost" href="#menu">See the menu</a>
+    </div>
+  </section>
+
+  <figure class="grayscale" style="margin: 0">
+    <img src="uploads/Screenshot%202026-09-09%20162723.png" alt="The lounge: leather seating, ring lights, low ceiling" style="display: block; width: 100%; height: clamp(280px, 46vw, 560px); object-fit: cover" />
+  </figure>
+
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
+
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 42px 28px; padding: 56px 0">
+      <div>
+        <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1; color: var(--color-accent); margin: 0">16–02</p>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 14px 0 0">Open daily, kitchen until midnight</p>
+      </div>
+      <div>
+        <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1; color: var(--color-accent); margin: 0">28</p>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 14px 0 0">Tobaccos on the board</p>
+      </div>
+      <div>
+        <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1; color: var(--color-accent); margin: 0">60</p>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 14px 0 0">Seats, plus a heated terrace</p>
+      </div>
+      <div>
+        <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1; color: var(--color-accent); margin: 0">18+</p>
+        <p style="font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 14px 0 0">ID checked at the door</p>
+      </div>
+    </section>
+
+    <hr class="hr" />
+
+    <section id="menu" style="padding: 56px 0 28px">
+      <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">The board</span>
+      <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 0 -0.03em">Shisha</h2>
+      <p style="font-size: 15.5px; line-height: 28px; max-width: 52ch; color: color-mix(in srgb, var(--color-text) 78%, transparent); margin: 20px 0 36px">Every head is packed to order and served with a fresh hose tip. Head changes are half price; a full re-pack starts a new session.</p>
+
+      <div style="overflow-x: auto">
+        <table class="table" style="min-width: 520px">
+          <thead>
+            <tr><th style="text-align: left">Tobacco</th><th style="text-align: left">Notes</th><th style="text-align: right">Price</th></tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ shisha }}" as="row" hint-placeholder-count="6">
+              <tr>
+                <td style="font-weight: 600">{{ row.name }}</td>
+                <td style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">{{ row.note }}</td>
+                <td style="text-align: right; font-feature-settings: 'tnum' 1">{{ row.price }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: 28px">
+        <span class="tag tag-accent">Fruit heads +4.00</span>
+        <span class="tag tag-outline">Head change 5.00</span>
+        <span class="tag tag-neutral">No sharing between tables</span>
+      </div>
+    </section>
+
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px 56px; padding: 42px 0 56px">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; line-height: 28px; letter-spacing: -0.01em; margin: 0 0 20px">Drinks</h3>
+        <sc-for list="{{ drinks }}" as="row" hint-placeholder-count="6">
+          <div style="display: flex; justify-content: space-between; gap: 20px; align-items: baseline; padding: 12px 0; border-top: 2px solid var(--color-divider)">
+            <span style="font-size: 15.5px; line-height: 24px">{{ row.name }}</span>
+            <span style="font-size: 15.5px; line-height: 24px; font-feature-settings: 'tnum' 1; white-space: nowrap">{{ row.price }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; line-height: 28px; letter-spacing: -0.01em; margin: 0 0 20px">From the kitchen</h3>
+        <sc-for list="{{ food }}" as="row" hint-placeholder-count="5">
+          <div style="display: flex; justify-content: space-between; gap: 20px; align-items: baseline; padding: 12px 0; border-top: 2px solid var(--color-divider)">
+            <span style="font-size: 15.5px; line-height: 24px">{{ row.name }}</span>
+            <span style="font-size: 15.5px; line-height: 24px; font-feature-settings: 'tnum' 1; white-space: nowrap">{{ row.price }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <hr class="hr" />
+
+    <section id="room" style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px clamp(24px, 5vw, 96px); align-items: center; padding: 56px 0">
+      <div>
+        <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">The room</span>
+        <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 32px; line-height: 42px; letter-spacing: -0.015em; margin: 0">Chesterfields, ring light, extraction that works</h2>
+        <p style="font-size: 15.5px; line-height: 28px; max-width: 48ch; color: color-mix(in srgb, var(--color-text) 78%, transparent); margin: 20px 0 0">Two rooms and a covered terrace. The main room takes groups up to eight; the back room can be booked whole for birthdays and private nights. Air is turned over every four minutes, so the smoke stays in the pipe and not in your jacket.</p>
+      </div>
+      <figure class="grayscale" style="margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px">
+        <image-slot id="room-a" shape="rect" placeholder="Main room, evening" style="width: 100%; aspect-ratio: 4 / 5"></image-slot>
+        <image-slot id="room-b" shape="rect" placeholder="Shisha detail / head close-up" style="width: 100%; aspect-ratio: 4 / 5"></image-slot>
+      </figure>
+    </section>
+
+    <hr class="hr" />
+
+    <section id="visit" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 56px; padding: 56px 0">
+      <div>
+        <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">Hours</span>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 0">Mon – Thu &nbsp; 16:00 – 01:00<br />Fri – Sat &nbsp; 16:00 – 03:00<br />Sun &nbsp; 15:00 – 01:00</p>
+      </div>
+      <div>
+        <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">Address</span>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 0">{{ address }}<br /><a href="{{ mapsHref }}">Open in maps</a></p>
+      </div>
+      <div>
+        <span style="display: block; font-size: 13px; line-height: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">House rules</span>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 0">Over 18s only, ID at the door. Tables held 20 minutes. No outside tobacco or drinks.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <section id="reserve" style="background: var(--color-accent); color: var(--color-bg)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 84px clamp(20px, 5vw, 72px)">
+      <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(34px, 4.2vw, 56px); line-height: 1.06; letter-spacing: -0.015em; margin: 0 0 0 -0.058em">
+        <span style="display: block">Call it in. We'll pack</span>
+        <span style="display: block">the first head.</span>
+      </h3>
+      <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 42px">
+        <a class="btn btn-ghost" href="{{ telHref }}" style="color: var(--color-bg); border-color: var(--color-bg)">{{ phone }}</a>
+        <a class="btn btn-ghost" href="{{ waHref }}" style="color: var(--color-bg); border-color: var(--color-bg)">WhatsApp us</a>
+      </div>
+      <p style="font-size: 15.5px; line-height: 28px; max-width: 48ch; margin: 28px 0 0">Groups over eight and the back room: message us a day ahead so we can set the table.</p>
+    </div>
+  </section>
+
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
+    <footer style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 56px 0; font-size: 13px; line-height: 28px; color: color-mix(in srgb, var(--color-text) 70%, transparent)">
+      <span>{{ barName }} — {{ address }}</span>
+      <span>Smoking harms your health. Entry from 18.</span>
+    </footer>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;barName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ALADIN&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+49 40 123 456&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;address&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Hafenstraße 12, 20359 Hamburg&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const phone = p.phone ?? "+49 40 123 456";
+    const address = p.address ?? "Hafenstraße 12, 20359 Hamburg";
+    return {
+      barName: p.barName ?? "ALADIN",
+      phone,
+      address,
+      telHref: "tel:" + phone.replace(/[^+\d]/g, ""),
+      waHref: "https://wa.me/" + phone.replace(/[^\d]/g, ""),
+      mapsHref: "https://maps.google.com/?q=" + encodeURIComponent(address),
+      shisha: [
+        { name: "Two Apples", note: "The classic — aniseed, heavy", price: "14.00" },
+        { name: "Grape & Mint", note: "Cold, long-burning", price: "14.00" },
+        { name: "Love 66", note: "Passionfruit, sweet", price: "15.00" },
+        { name: "Blue Mist", note: "Blueberry, mild", price: "15.00" },
+        { name: "House Mix", note: "Lemon, mint, cactus — our pack", price: "16.00" },
+        { name: "Pineapple head", note: "Served in the fruit, 20 min prep", price: "22.00" }
+      ],
+      drinks: [
+        { name: "Mint tea, pot", price: "4.50" },
+        { name: "Turkish coffee", price: "3.50" },
+        { name: "Fresh juice — orange, pomegranate", price: "5.50" },
+        { name: "Lemonade, house-made", price: "4.00" },
+        { name: "Ayran", price: "3.50" },
+        { name: "Mocktail of the night", price: "7.50" }
+      ],
+      food: [
+        { name: "Mezze plate for two", price: "14.00" },
+        { name: "Halloumi, grilled", price: "8.50" },
+        { name: "Chicken wings, spiced", price: "9.00" },
+        { name: "Fries with garlic sauce", price: "5.00" },
+        { name: "Baklava, three pieces", price: "6.00" }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-def32808-3e75-45b8-991f-e13c7a4e83bd/styles.css">
+<script src="_ds/modernist-def32808-3e75-45b8-991f-e13c7a4e83bd/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
+<style>
+  body { margin: 0; text-wrap: pretty; background: #14101c; }
+  a { color: var(--color-accent-700); text-decoration: none; }
+  a:hover { color: var(--color-accent); text-decoration: underline; }
+</style>
+</helmet>
+
+<div style="--color-bg: #14101c; --color-surface: #1f1830; --color-text: #efeaf6; --color-divider: color-mix(in srgb, #efeaf6 26%, transparent); --color-accent: #a06bff; --color-accent-100: #2a2140; --color-accent-200: #332654; --color-accent-300: #4a3579; --color-accent-400: #6b48b8; --color-accent-500: #a06bff; --color-accent-600: #b489ff; --color-accent-700: #c6a8ff; --color-accent-800: #d9c2ff; --color-accent-900: #ece1ff; --color-accent-2: #a06bff; --color-accent-2-100: #2a2140; --color-accent-2-800: #d9c2ff; --color-neutral-100: #241d33; --color-neutral-200: #2c2440; --color-neutral-800: #ded7ea; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); min-height: 100vh">
+
+  <nav class="nav" style="position: sticky; top: 0; z-index: 20; background: var(--color-bg); gap: var(--space-3)">
+    <span class="nav-brand" style="cursor: pointer" onClick="{{ goHome }}">{{ barName }}</span>
+    <a href="#" onClick="{{ goHome }}">{{ t.navHome }}</a>
+    <a href="#" onClick="{{ goMenu }}">{{ t.navMenu }}</a>
+    <a href="#" onClick="{{ goEvents }}">{{ t.navEvents }}</a>
+    <a href="#" onClick="{{ goContact }}">{{ t.navContact }}</a>
+    <button type="button" class="btn btn-ghost" onClick="{{ toggleLang }}" style="font-feature-settings: 'tnum' 1">{{ langLabel }}</button>
+    <a class="btn btn-primary" href="#" onClick="{{ goContact }}">{{ t.reserve }}</a>
+  </nav>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <section style="max-width: 1200px; margin: 0 auto; padding: 84px clamp(20px, 5vw, 72px) 56px">
+        <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 6.2vw, 84px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 0 -0.058em">
+          <span style="display: block">{{ t.heroA }}</span>
+          <span style="display: block">{{ t.heroB }}</span>
+        </h1>
+        <p style="font-size: 17px; line-height: 28px; max-width: 56ch; margin: 32px 0 0">{{ t.heroSub }}</p>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 28px">
+          <a class="btn btn-primary" href="#" onClick="{{ goContact }}">{{ t.reserve }}</a>
+          <a class="btn btn-ghost" href="#" onClick="{{ goMenu }}">{{ t.seeMenu }}</a>
+        </div>
+      </section>
+
+      <figure class="grayscale" style="margin: 0">
+        <img src="uploads/photos-1788964205879-79cv.png" alt="Lounge interior" style="display: block; width: 100%; height: clamp(280px, 46vw, 560px); object-fit: cover" />
+      </figure>
+
+      <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 42px 28px; padding: 56px 0">
+          <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+            <div>
+              <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.2vw, 44px); line-height: 1.1; color: var(--color-accent); margin: 0">{{ f.num }}</p>
+              <p style="font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 14px 0 0">{{ f.label }}</p>
+            </div>
+          </sc-for>
+        </section>
+
+        <hr class="hr" />
+
+        <section style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px clamp(24px, 5vw, 96px); align-items: center; padding: 56px 0">
+          <div>
+            <span style="display: block; font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">{{ t.aboutKicker }}</span>
+            <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(28px, 3.2vw, 36px); line-height: 1.2; letter-spacing: -0.015em; margin: 0">{{ t.aboutTitle }}</h2>
+            <p style="font-size: 15.5px; line-height: 28px; max-width: 48ch; color: color-mix(in srgb, var(--color-text) 78%, transparent); margin: 20px 0 0">{{ t.aboutBody }}</p>
+          </div>
+          <figure class="grayscale" style="margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px">
+            <image-slot id="v2-room-a" shape="rect" placeholder="Main room, evening" style="width: 100%; aspect-ratio: 4 / 5"></image-slot>
+            <image-slot id="v2-room-b" shape="rect" placeholder="Head close-up" style="width: 100%; aspect-ratio: 4 / 5"></image-slot>
+          </figure>
+        </section>
+
+        <hr class="hr" />
+
+        <section style="padding: 56px 0">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; margin-bottom: 28px">
+            <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(28px, 3.2vw, 36px); line-height: 1.2; letter-spacing: -0.015em; margin: 0">{{ t.weekTitle }}</h2>
+            <a href="#" onClick="{{ goEvents }}">{{ t.allEvents }}</a>
+          </div>
+          <sc-for list="{{ weekly }}" as="e" hint-placeholder-count="3">
+            <div style="display: grid; grid-template-columns: minmax(90px, 140px) minmax(0, 1fr) minmax(0, 1.2fr); gap: 14px 28px; align-items: baseline; padding: 20px 0; border-top: 2px solid var(--color-divider)">
+              <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; line-height: 24px; letter-spacing: 0.04em; text-transform: uppercase; margin: 0">{{ e.day }}</p>
+              <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 22px; line-height: 28px; letter-spacing: -0.01em; margin: 0">{{ e.name }}</h3>
+              <p style="font-size: 15.5px; line-height: 24px; color: color-mix(in srgb, var(--color-text) 78%, transparent); margin: 0">{{ e.note }}</p>
+            </div>
+          </sc-for>
+        </section>
+
+        <hr class="hr" />
+
+        <section style="padding: 56px 0">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; margin-bottom: 28px">
+            <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(28px, 3.2vw, 36px); line-height: 1.2; letter-spacing: -0.015em; margin: 0">{{ instaHandle }}</h2>
+            <a href="{{ instaHref }}">{{ t.follow }}</a>
+          </div>
+          <div class="grayscale" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px">
+            <image-slot id="v2-ig-1" shape="rect" placeholder="Instagram 1" style="width: 100%; aspect-ratio: 1"></image-slot>
+            <image-slot id="v2-ig-2" shape="rect" placeholder="Instagram 2" style="width: 100%; aspect-ratio: 1"></image-slot>
+            <image-slot id="v2-ig-3" shape="rect" placeholder="Instagram 3" style="width: 100%; aspect-ratio: 1"></image-slot>
+            <image-slot id="v2-ig-4" shape="rect" placeholder="Instagram 4" style="width: 100%; aspect-ratio: 1"></image-slot>
+          </div>
+        </section>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isMenu }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
+      <section style="padding: 72px 0 42px">
+        <span style="display: block; font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">{{ t.menuKicker }}</span>
+        <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(38px, 5.4vw, 68px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 0 -0.04em">{{ t.menuTitle }}</h1>
+        <p style="font-size: 17px; line-height: 28px; max-width: 56ch; margin: 28px 0 0">{{ t.menuIntro }}</p>
+      </section>
+
+      <hr class="hr" />
+
+      <sc-for list="{{ menuGroups }}" as="g" hint-placeholder-count="3">
+        <section style="padding: 56px 0 28px">
+          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 34px); line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 8px">{{ g.title }}</h2>
+          <p style="font-size: 15.5px; line-height: 28px; max-width: 52ch; color: color-mix(in srgb, var(--color-text) 78%, transparent); margin: 0 0 32px">{{ g.intro }}</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+            <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="4">
+              <div class="card">
+                <p class="card-kicker">{{ c.kicker }}</p>
+                <h3 class="card-title">{{ c.name }}</h3>
+                <p class="card-body">{{ c.body }}</p>
+                <p class="card-meta">{{ c.meta }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-for>
+
+      <hr class="hr" />
+
+      <section style="padding: 42px 0 56px; display: flex; gap: var(--space-2); flex-wrap: wrap">
+        <sc-for list="{{ menuNotes }}" as="n" hint-placeholder-count="3">
+          <span class="tag tag-outline">{{ n.text }}</span>
+        </sc-for>
+      </section>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isEvents }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
+      <section style="padding: 72px 0 42px">
+        <span style="display: block; font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">{{ t.eventsKicker }}</span>
+        <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(38px, 5.4vw, 68px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 0 -0.04em">{{ t.eventsTitle }}</h1>
+        <p style="font-size: 17px; line-height: 28px; max-width: 56ch; margin: 28px 0 0">{{ t.eventsIntro }}</p>
+      </section>
+
+      <hr class="hr" />
+
+      <section style="padding: 42px 0">
+        <sc-for list="{{ events }}" as="e" hint-placeholder-count="5">
+          <div style="display: grid; grid-template-columns: minmax(90px, 130px) minmax(0, 1fr) minmax(0, 1.1fr) auto; gap: 14px 28px; align-items: baseline; padding: 24px 0; border-top: 2px solid var(--color-divider)">
+            <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 20px; line-height: 28px; font-feature-settings: 'tnum' 1; color: var(--color-accent); margin: 0">{{ e.date }}</p>
+            <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 22px; line-height: 28px; letter-spacing: -0.01em; margin: 0">{{ e.name }}</h3>
+            <p style="font-size: 15.5px; line-height: 24px; color: color-mix(in srgb, var(--color-text) 78%, transparent); margin: 0">{{ e.note }}</p>
+            <span class="tag tag-accent">{{ e.time }}</span>
+          </div>
+        </sc-for>
+      </section>
+
+      <hr class="hr" />
+
+      <section style="padding: 56px 0">
+        <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 34px); line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 28px">{{ t.weekTitle }}</h2>
+        <sc-for list="{{ weekly }}" as="e" hint-placeholder-count="3">
+          <div style="display: grid; grid-template-columns: minmax(90px, 140px) minmax(0, 1fr) minmax(0, 1.2fr); gap: 14px 28px; align-items: baseline; padding: 20px 0; border-top: 2px solid var(--color-divider)">
+            <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 15px; line-height: 24px; letter-spacing: 0.04em; text-transform: uppercase; margin: 0">{{ e.day }}</p>
+            <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 22px; line-height: 28px; letter-spacing: -0.01em; margin: 0">{{ e.name }}</h3>
+            <p style="font-size: 15.5px; line-height: 24px; color: color-mix(in srgb, var(--color-text) 78%, transparent); margin: 0">{{ e.note }}</p>
+          </div>
+        </sc-for>
+      </section>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
+      <section style="padding: 72px 0 42px">
+        <span style="display: block; font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">{{ t.contactKicker }}</span>
+        <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(38px, 5.4vw, 68px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 0 -0.04em">{{ t.contactTitle }}</h1>
+      </section>
+
+      <hr class="hr" />
+
+      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 42px clamp(28px, 5vw, 80px); padding: 56px 0">
+        <div>
+          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 24px; line-height: 28px; margin: 0 0 24px">{{ t.formTitle }}</h2>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div style="border: 2px solid var(--color-accent); padding: 24px">
+              <p style="font-size: 15.5px; line-height: 28px; margin: 0">{{ t.formSent }}</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <div style="display: grid; gap: 20px; max-width: 460px">
+              <div class="field"><label for="rname">{{ t.fName }}</label><input class="input" id="rname" type="text" /></div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+                <div class="field"><label for="rdate">{{ t.fDate }}</label><input class="input" id="rdate" type="date" /></div>
+                <div class="field"><label for="rtime">{{ t.fTime }}</label><input class="input" id="rtime" type="time" /></div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+                <div class="field"><label for="rguests">{{ t.fGuests }}</label><input class="input" id="rguests" type="number" min="1" max="20" /></div>
+                <div class="field"><label for="rphone">{{ t.fPhone }}</label><input class="input" id="rphone" type="tel" /></div>
+              </div>
+              <div class="field"><label for="rnote">{{ t.fNote }}</label><input class="input" id="rnote" type="text" /></div>
+              <button type="button" class="btn btn-primary" onClick="{{ submit }}">{{ t.fSubmit }}</button>
+              <p style="font-size: 13px; line-height: 24px; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0">{{ t.formSmall }}</p>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="display: grid; gap: 42px; align-content: start">
+          <div>
+            <span style="display: block; font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">{{ t.hours }}</span>
+            <p style="font-size: 15.5px; line-height: 28px; margin: 0">{{ t.hoursA }}<br />{{ t.hoursB }}<br />{{ t.hoursC }}</p>
+          </div>
+          <div>
+            <span style="display: block; font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">{{ t.where }}</span>
+            <p style="font-size: 15.5px; line-height: 28px; margin: 0">{{ address }}<br /><a href="{{ mapsHref }}">{{ t.openMaps }}</a></p>
+          </div>
+          <div>
+            <span style="display: block; font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">{{ t.direct }}</span>
+            <div style="display: flex; gap: var(--space-3); flex-wrap: wrap">
+              <a class="btn btn-secondary" href="{{ telHref }}">{{ phone }}</a>
+              <a class="btn btn-secondary" href="{{ waHref }}">WhatsApp</a>
+              <a class="btn btn-secondary" href="{{ instaHref }}">Instagram</a>
+            </div>
+          </div>
+          <div>
+            <span style="display: block; font-size: 13px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 14px">{{ t.rulesKicker }}</span>
+            <p style="font-size: 15.5px; line-height: 28px; max-width: 40ch; margin: 0">{{ t.rulesBody }}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <section style="background: var(--color-accent); color: var(--color-bg)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 72px)">
+      <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(32px, 4vw, 52px); line-height: 1.06; letter-spacing: -0.015em; margin: 0 0 0 -0.058em">
+        <span style="display: block">{{ t.closeA }}</span>
+        <span style="display: block">{{ t.closeB }}</span>
+      </h3>
+      <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 42px">
+        <a class="btn btn-ghost" href="{{ telHref }}" style="color: var(--color-bg); border-color: var(--color-bg)">{{ phone }}</a>
+        <a class="btn btn-ghost" href="{{ waHref }}" style="color: var(--color-bg); border-color: var(--color-bg)">WhatsApp</a>
+        <a class="btn btn-ghost" href="#" onClick="{{ goContact }}" style="color: var(--color-bg); border-color: var(--color-bg)">{{ t.reserve }}</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px)">
+    <footer style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 42px 0; font-size: 13px; line-height: 28px; color: color-mix(in srgb, var(--color-text) 70%, transparent)">
+      <span>{{ barName }} — {{ address }} — {{ phone }}</span>
+      <span>{{ t.legal }}</span>
+    </footer>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;barName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ALADIN&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+49 40 123 456&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;address&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Hafenstraße 12, 20359 Hamburg&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;instagram&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;@aladin.lounge&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const COPY = {
+  de: {
+    navHome: "Start", navMenu: "Karte", navEvents: "Events", navContact: "Kontakt",
+    reserve: "Tisch reservieren", seeMenu: "Zur Karte",
+    heroA: "Kohle, Rauch und", heroB: "ein langer Abend.",
+    heroSub: "Eine Shisha-Lounge zum Sitzenbleiben: tiefes Leder, gedämpftes Licht und Tabak, den wir selbst mischen und stopfen. Jeden Abend bis spät geöffnet.",
+    aboutKicker: "Das Haus", aboutTitle: "Zwei Räume, eine überdachte Terrasse",
+    aboutBody: "Der Hauptraum nimmt Gruppen bis acht Personen, der hintere Salon lässt sich komplett buchen. Die Luft wird alle vier Minuten getauscht — der Rauch bleibt in der Pfeife, nicht im Jackett. Jeder Kopf wird auf Bestellung gestopft und mit frischem Mundstück serviert.",
+    weekTitle: "Die Woche", allEvents: "Alle Events", follow: "Folgen",
+    menuKicker: "Karte", menuTitle: "Was auf dem Tisch steht",
+    menuIntro: "Die Karte wechselt mit der Saison. Hier stehen die Kategorien — die vollständige Liste mit Preisen liegt am Tisch.",
+    eventsKicker: "Programm", eventsTitle: "Events & Shisha-Nächte",
+    eventsIntro: "Feste Wochenabende und besondere Nächte. Für Gruppen ab acht Personen bitte einen Tag vorher melden.",
+    contactKicker: "Kontakt", contactTitle: "Reservieren & finden",
+    formTitle: "Tisch anfragen",
+    fName: "Name", fDate: "Datum", fTime: "Uhrzeit", fGuests: "Personen", fPhone: "Telefon", fNote: "Anmerkung (Terrasse, hinterer Salon …)",
+    fSubmit: "Anfrage senden",
+    formSmall: "Wir bestätigen per Telefon oder WhatsApp, meist innerhalb einer Stunde.",
+    formSent: "Danke — die Anfrage ist notiert. Wir melden uns kurz zur Bestätigung.",
+    hours: "Öffnungszeiten", hoursA: "Mo – Do  16:00 – 01:00", hoursB: "Fr – Sa  16:00 – 03:00", hoursC: "So  15:00 – 01:00",
+    where: "Adresse", openMaps: "In Karten öffnen", direct: "Direkt",
+    rulesKicker: "Hausregeln", rulesBody: "Einlass ab 18, Ausweis am Eingang. Tische werden 20 Minuten gehalten. Kein eigener Tabak, keine eigenen Getränke.",
+    closeA: "Ruf an. Wir stopfen", closeB: "den ersten Kopf.",
+    legal: "Rauchen gefährdet die Gesundheit. Einlass ab 18."
+  },
+  en: {
+    navHome: "Home", navMenu: "Menu", navEvents: "Events", navContact: "Contact",
+    reserve: "Reserve a table", seeMenu: "See the menu",
+    heroA: "Coal, smoke and", heroB: "a long evening.",
+    heroSub: "A shisha lounge built for staying put: deep leather, low light and tobacco we mix and pack ourselves. Open late, every night.",
+    aboutKicker: "The house", aboutTitle: "Two rooms and a covered terrace",
+    aboutBody: "The main room takes groups up to eight; the back salon can be booked whole. Air is turned over every four minutes, so the smoke stays in the pipe and not in your jacket. Every head is packed to order and served with a fresh tip.",
+    weekTitle: "The week", allEvents: "All events", follow: "Follow",
+    menuKicker: "Menu", menuTitle: "What comes to the table",
+    menuIntro: "The list moves with the season. These are the categories — the full menu with prices is at your table.",
+    eventsKicker: "Programme", eventsTitle: "Events & shisha nights",
+    eventsIntro: "Fixed weekly evenings and one-off nights. For groups of eight or more, message us a day ahead.",
+    contactKicker: "Contact", contactTitle: "Reserve and find us",
+    formTitle: "Request a table",
+    fName: "Name", fDate: "Date", fTime: "Time", fGuests: "Guests", fPhone: "Phone", fNote: "Note (terrace, back salon …)",
+    fSubmit: "Send request",
+    formSmall: "We confirm by phone or WhatsApp, usually within the hour.",
+    formSent: "Thank you — your request is noted. We'll be in touch to confirm.",
+    hours: "Hours", hoursA: "Mon – Thu  16:00 – 01:00", hoursB: "Fri – Sat  16:00 – 03:00", hoursC: "Sun  15:00 – 01:00",
+    where: "Address", openMaps: "Open in maps", direct: "Direct",
+    rulesKicker: "House rules", rulesBody: "Over 18s only, ID at the door. Tables are held for 20 minutes. No outside tobacco or drinks.",
+    closeA: "Call it in. We'll pack", closeB: "the first head.",
+    legal: "Smoking harms your health. Entry from 18."
+  }
+};
+
+const DATA = {
+  facts: [
+    { num: "16–02", de: "Täglich geöffnet", en: "Open daily" },
+    { num: "28", de: "Tabake auf der Tafel", en: "Tobaccos on the board" },
+    { num: "60", de: "Plätze plus Terrasse", en: "Seats plus terrace" },
+    { num: "18+", de: "Ausweiskontrolle am Eingang", en: "ID checked at the door" }
+  ],
+  weekly: [
+    { dayDe: "Dienstag", dayEn: "Tuesday", nameDe: "Backgammon-Abend", nameEn: "Backgammon night", noteDe: "Bretter aufs Haus, Turnier ab 20:00.", noteEn: "Boards on the house, tournament from 20:00." },
+    { dayDe: "Donnerstag", dayEn: "Thursday", nameDe: "Mix-Tafel", nameEn: "Mix board", noteDe: "Unsere Eigenmischungen im Wechsel, jede Woche eine neue.", noteEn: "Our own blends in rotation, a new one weekly." },
+    { dayDe: "Sa & So", dayEn: "Sat & Sun", nameDe: "Late Lounge", nameEn: "Late lounge", noteDe: "DJ-Set ab 22:00, Küche bis Mitternacht.", noteEn: "DJ set from 22:00, kitchen until midnight." }
+  ],
+  events: [
+    { date: "12.09.", timeDe: "ab 21:00", timeEn: "from 21:00", nameDe: "Oud & Rauch", nameEn: "Oud & smoke", noteDe: "Live-Oud im Hauptraum, Reservierung empfohlen.", noteEn: "Live oud in the main room, reservation advised." },
+    { date: "19.09.", timeDe: "ab 20:00", timeEn: "from 20:00", nameDe: "Tasting: Dark Leaf", nameEn: "Tasting: dark leaf", noteDe: "Vier Köpfe, vier Sorten, mit Erklärung vom Haus.", noteEn: "Four heads, four leaves, walked through by the house." },
+    { date: "27.09.", timeDe: "ab 22:00", timeEn: "from 22:00", nameDe: "Shisha Night Vol. 12", nameEn: "Shisha Night Vol. 12", noteDe: "Gast-DJ, Terrasse beheizt, Küche verlängert.", noteEn: "Guest DJ, terrace heated, kitchen extended." },
+    { date: "05.10.", timeDe: "ab 19:00", timeEn: "from 19:00", nameDe: "Privat: Salon buchbar", nameEn: "Private: salon available", noteDe: "Hinterer Salon für bis zu 24 Gäste, festes Paket.", noteEn: "Back salon for up to 24 guests, fixed package." }
+  ],
+  menu: [
+    {
+      titleDe: "Shisha", titleEn: "Shisha",
+      introDe: "Kopf nach Wahl, auf Bestellung gestopft. Kopfwechsel zum halben Preis.",
+      introEn: "Head of your choice, packed to order. Head changes at half price.",
+      items: [
+        { kDe: "Kategorie 01", kEn: "Category 01", nDe: "Klassiker", nEn: "Classics", bDe: "Doppelapfel, Traube-Minze, Zitrone-Minze — die Sorten, die immer stehen.", bEn: "Double apple, grape mint, lemon mint — the ones always on the board.", mDe: "Ab 14 €", mEn: "From €14" },
+        { kDe: "Kategorie 02", kEn: "Category 02", nDe: "Fruchtig", nEn: "Fruit", bDe: "Passionsfrucht, Blaubeere, Melone. Süß, mild, für lange Sessions.", bEn: "Passionfruit, blueberry, melon. Sweet, mild, made for long sessions.", mDe: "Ab 15 €", mEn: "From €15" },
+        { kDe: "Kategorie 03", kEn: "Category 03", nDe: "Dark Leaf", nEn: "Dark leaf", bDe: "Kräftige Blätter für Erfahrene, mit Kohleführung vom Haus.", bEn: "Strong leaf for the experienced, with coal management from us.", mDe: "Ab 17 €", mEn: "From €17" },
+        { kDe: "Kategorie 04", kEn: "Category 04", nDe: "Fruchtkopf", nEn: "Fruit bowl", bDe: "In Ananas oder Melone, 20 Minuten Vorbereitung.", bEn: "In pineapple or melon, 20 minutes' preparation.", mDe: "Ab 22 €", mEn: "From €22" }
+      ]
+    },
+    {
+      titleDe: "Getränke", titleEn: "Drinks",
+      introDe: "Alkoholfrei ausgerichtet, mit Barkarte für Cocktails ohne Alkohol.",
+      introEn: "Alcohol-free at heart, with a full mocktail bar list.",
+      items: [
+        { kDe: "Kategorie 01", kEn: "Category 01", nDe: "Tee & Kaffee", nEn: "Tea & coffee", bDe: "Minztee in der Kanne, türkischer Kaffee, Karak.", bEn: "Mint tea by the pot, Turkish coffee, karak.", mDe: "3,50 – 5 €", mEn: "€3.50 – 5" },
+        { kDe: "Kategorie 02", kEn: "Category 02", nDe: "Frisch gepresst", nEn: "Fresh juice", bDe: "Orange, Granatapfel, Karotte-Ingwer.", bEn: "Orange, pomegranate, carrot ginger.", mDe: "5 – 7 €", mEn: "€5 – 7" },
+        { kDe: "Kategorie 03", kEn: "Category 03", nDe: "Mocktails", nEn: "Mocktails", bDe: "Sechs Signatures, geschüttelt an der Bar.", bEn: "Six signatures, shaken at the bar.", mDe: "7,50 – 9 €", mEn: "€7.50 – 9" },
+        { kDe: "Kategorie 04", kEn: "Category 04", nDe: "Klassisch kalt", nEn: "Cold classics", bDe: "Hausgemachte Limonade, Ayran, Wasser.", bEn: "House lemonade, ayran, water.", mDe: "3 – 4,50 €", mEn: "€3 – 4.50" }
+      ]
+    },
+    {
+      titleDe: "Küche", titleEn: "Kitchen",
+      introDe: "Kleine Karte, warm bis Mitternacht.",
+      introEn: "A short list, served warm until midnight.",
+      items: [
+        { kDe: "Kategorie 01", kEn: "Category 01", nDe: "Mezze", nEn: "Mezze", bDe: "Platte zum Teilen: Hummus, Muhammara, Baba Ghanoush.", bEn: "Sharing plate: hummus, muhammara, baba ghanoush.", mDe: "Ab 14 €", mEn: "From €14" },
+        { kDe: "Kategorie 02", kEn: "Category 02", nDe: "Vom Grill", nEn: "From the grill", bDe: "Halloumi, Hähnchenflügel, Köfte.", bEn: "Halloumi, chicken wings, köfte.", mDe: "Ab 8,50 €", mEn: "From €8.50" },
+        { kDe: "Kategorie 03", kEn: "Category 03", nDe: "Süßes", nEn: "Sweet", bDe: "Baklava, Künefe, Datteln.", bEn: "Baklava, künefe, dates.", mDe: "Ab 6 €", mEn: "From €6" }
+      ]
+    }
+  ],
+  notes: [
+    { de: "Kopfwechsel 5 €", en: "Head change €5" },
+    { de: "Fruchtkopf +4 €", en: "Fruit bowl +€4" },
+    { de: "Kein Teilen zwischen Tischen", en: "No sharing between tables" },
+    { de: "Karte & Bar zahlen getrennt", en: "Card and cash accepted" }
+  ]
+};
+
+class Component extends DCLogic {
+  state = { page: "home", lang: "de", sent: false };
+
+  go(page) {
+    return (e) => { if (e) e.preventDefault(); this.setState({ page }); window.scrollTo(0, 0); };
+  }
+
+  renderVals() {
+    const p = this.props;
+    const lang = this.state.lang;
+    const t = COPY[lang];
+    const phone = p.phone ?? "+49 40 123 456";
+    const address = p.address ?? "Hafenstraße 12, 20359 Hamburg";
+    const handle = p.instagram ?? "@aladin.lounge";
+    const de = lang === "de";
+    return {
+      t,
+      barName: p.barName ?? "ALADIN",
+      phone, address,
+      instaHandle: handle,
+      instaHref: "https://instagram.com/" + handle.replace("@", ""),
+      telHref: "tel:" + phone.replace(/[^+\d]/g, ""),
+      waHref: "https://wa.me/" + phone.replace(/[^\d]/g, ""),
+      mapsHref: "https://maps.google.com/?q=" + encodeURIComponent(address),
+      langLabel: de ? "EN" : "DE",
+      toggleLang: () => this.setState({ lang: de ? "en" : "de" }),
+      goHome: this.go("home"), goMenu: this.go("menu"), goEvents: this.go("events"), goContact: this.go("contact"),
+      isHome: this.state.page === "home",
+      isMenu: this.state.page === "menu",
+      isEvents: this.state.page === "events",
+      isContact: this.state.page === "contact",
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: () => this.setState({ sent: true }),
+      facts: DATA.facts.map((f) => ({ num: f.num, label: de ? f.de : f.en })),
+      weekly: DATA.weekly.map((e) => ({ day: de ? e.dayDe : e.dayEn, name: de ? e.nameDe : e.nameEn, note: de ? e.noteDe : e.noteEn })),
+      events: DATA.events.map((e) => ({ date: e.date, time: de ? e.timeDe : e.timeEn, name: de ? e.nameDe : e.nameEn, note: de ? e.noteDe : e.noteEn })),
+      menuGroups: DATA.menu.map((g) => ({
+        title: de ? g.titleDe : g.titleEn,
+        intro: de ? g.introDe : g.introEn,
+        items: g.items.map((c) => ({ kicker: de ? c.kDe : c.kEn, name: de ? c.nDe : c.nEn, body: de ? c.bDe : c.bEn, meta: de ? c.mDe : c.mEn }))
+      })),
+      menuNotes: DATA.notes.map((n) => ({ text: de ? n.de : n.en }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
