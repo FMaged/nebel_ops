@@ -1006,77 +1006,24 @@ known bug turns it red.
 
 ## - [x] T8.8 — Warn about launch blockers
 
-**What.** A launch-readiness section in 
-> nebel-lounge@1.0.0 check
-> node scripts/check.mjs
-
-
-Nebel Lounge — 8 Seiten
-
-  [32mOK[0m   Kontaktdaten nur in site.yaml
-  [32mOK[0m   Keine Inline-Styles
-  [32mOK[0m   Farben nur in tokens.css
-  [32mOK[0m   CSS-Variablen lösen auf  17 Tokens
-  [32mOK[0m   Keine toten internen Links
-  [32mOK[0m   Keine doppelten IDs
-  [32mOK[0m   Kopfdaten und Zugänglichkeit
-  [32mOK[0m   Strukturierte Daten gültig
-  [32mOK[0m   Bilder mit alt und festem Rahmen
-  [32mOK[0m   Inhalt ohne JavaScript sichtbar
-  [32mOK[0m   CMS kennt alle Felder
-
-  [33mTODO[0m vor dem Livegang
-       src/admin/config.yml: repo und base_url eintragen — sonst kein CMS-Login
-  [33mTODO[0m vor dem Livegang
-       src/img: Platzhalterbilder durch echte Fotos ersetzen
-  [33mTODO[0m vor dem Livegang
-       src/img: og-image.svg nach PNG rastern und og:image setzen
-  [33mTODO[0m vor dem Livegang
-       impressum.njk und datenschutz.njk: echte Angaben eintragen
-
-[32mAlle Prüfungen bestanden[0m.
+**What.** A launch-readiness section in `npm run check`.
 
 **Why.** Added when Netlify was wired up. Several things must be filled in before
-going live — the CMS repo, real photos, the social image, the legal text — and
-each is a placeholder that looks finished enough to ship by accident. The checks
-now list them every run.
+going live — the CMS repository, real photographs, the social image, the legal
+text — and each is a placeholder that looks finished enough to ship by accident.
+The checks now list them on every run.
 
-**How.** Warnings, not failures, so they do not block development. They disappear
-as each is resolved: setting  already removed one.
+**How.** Warnings rather than failures, so they never block development. Each
+disappears as it is resolved: setting `formAction` for Netlify already removed one
+of them.
 
-**Done when.** 
-> nebel-lounge@1.0.0 check
-> node scripts/check.mjs
-
-
-Nebel Lounge — 8 Seiten
-
-  [32mOK[0m   Kontaktdaten nur in site.yaml
-  [32mOK[0m   Keine Inline-Styles
-  [32mOK[0m   Farben nur in tokens.css
-  [32mOK[0m   CSS-Variablen lösen auf  17 Tokens
-  [32mOK[0m   Keine toten internen Links
-  [32mOK[0m   Keine doppelten IDs
-  [32mOK[0m   Kopfdaten und Zugänglichkeit
-  [32mOK[0m   Strukturierte Daten gültig
-  [32mOK[0m   Bilder mit alt und festem Rahmen
-  [32mOK[0m   Inhalt ohne JavaScript sichtbar
-  [32mOK[0m   CMS kennt alle Felder
-
-  [33mTODO[0m vor dem Livegang
-       src/admin/config.yml: repo und base_url eintragen — sonst kein CMS-Login
-  [33mTODO[0m vor dem Livegang
-       src/img: Platzhalterbilder durch echte Fotos ersetzen
-  [33mTODO[0m vor dem Livegang
-       src/img: og-image.svg nach PNG rastern und og:image setzen
-  [33mTODO[0m vor dem Livegang
-       impressum.njk und datenschutz.njk: echte Angaben eintragen
-
-[32mAlle Prüfungen bestanden[0m lists every outstanding launch blocker and drops
-each as it is fixed.
+**Done when.** `npm run check` lists every outstanding launch blocker and drops
+each one as it is fixed.
 
 > **Updates**
 > _none_
+
+---
 
 ## Out of scope
 
