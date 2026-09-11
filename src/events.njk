@@ -71,7 +71,7 @@ heroSub: "Geburtstage, Firmenabende und Gruppen ab zehn Personen. Wir stellen um
       <span class="label">Anfrage</span>
       <h2 class="h-md">Erzähl uns von<br />deinem Abend.</h2>
 
-      <form class="form" id="anfrage" method="POST" action="{{ site.formAction }}">
+      <form class="form" id="anfrage" method="POST"{% if site.formAction %} action="{{ site.formAction }}"{% endif %}>
         {# Spam-Falle: echte Menschen sehen und füllen dieses Feld nie #}
         <p class="honeypot" aria-hidden="true">
           <label for="firma">Firma nicht ausfüllen</label>

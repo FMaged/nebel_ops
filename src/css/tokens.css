@@ -65,14 +65,14 @@
 /* 1. Farben & Variablen ---------------------------------------------------- */
 :root {
   --bg: #100818;            /* sehr dunkles Pflaumen-Schwarz */
-  --bg-soft: var(--bg-soft);       /* Flächen, Karten */
+  --bg-soft: #180d24;       /* Flächen, Karten */
   --bg-line: #2a1a3c;       /* Linien, Rahmen */
   --purple: #7a3bb5;        /* Hauptlila */
   --purple-light: #c08cf5;  /* Links, Glühen */
   --brass: #d6a24a;         /* warmer Messing-Akzent, sparsam */
   --text: #ede4f5;          /* weiches Off-White */
   --text-dim: #b6a6c6;      /* Nebentext */
-  --text-on-purple: var(--text-on-purple);   /* Schrift auf lila Flächen */      /* Nebentext */
+  --text-on-purple: #fff;   /* Schrift auf lila Flächen */
 
   --font-display: "Bodoni Moda", Georgia, "Times New Roman", serif;
   --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;

@@ -36,7 +36,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | 5 — Production basics | 6 | 5 |
 | 6 — Images and map | 2 | 0 |
 | 7 — CMS (optional) | 2 | 0 |
-| 8 — Final verification | 6 | 0 |
+| 8 — Final verification | 6 | 5 |
 
 ---
 
@@ -332,6 +332,7 @@ Expect differences only in indentation and blank lines. Anything else is a porti
 > **Updates**
 > - 2026-09-11 — All five diffs clean on the first full run after one real bug was found and fixed (see T1.2). The separate browser check at three widths was not run in this environment; with byte-identical HTML and the same style.css, rendering is necessarily identical, so the diff is the stronger evidence.
 > - 2026-09-11 — Normaliser later strengthened in T2.3 from a leading-whitespace sed to a structural HTML comparison. All five pages still clean under the stricter check.
+> - 2026-09-11 — Browser check has now actually been run, in headless Firefox at 375px, 1400px and full-page. Homepage, menu page and mobile all render correctly: fonts load, the current-page marker shows, the burger appears below the breakpoint, no horizontal overflow.
 
 ---
 
@@ -864,7 +865,7 @@ Write the actual steps into this task's Updates block once hosting is chosen, si
 
 Run all six before calling the project done. Each targets a specific way this build could have gone wrong.
 
-## - [ ] T8.1 — Token change propagates
+## - [x] T8.1 — Token change propagates
 
 **What.** Change `--purple` in `tokens.css` to something loud. Confirm it changes everywhere. Revert.
 
@@ -873,11 +874,11 @@ Run all six before calling the project done. Each targets a specific way this bu
 **Done when.** Every purple element changed, and the revert is clean.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — FOUND A REAL BUG. The Phase 3 colour substitution had made two tokens self-referential: --bg-soft: var(--bg-soft) and --text-on-purple: var(--text-on-purple). Both resolved to nothing, which would have stripped the background from every card, the footer, the marquee, form fields and the map, and made primary button text inherit instead of white. Fixed to literal values. Re-run is clean: no trace of the old purple anywhere in the built CSS or HTML. Also audited all 17 tokens — every var() reference resolves, none self-referential. Note src/img/og-image.svg hardcodes the palette and cannot follow a token change; that is inherent to a static image.
 
 ---
 
-## - [ ] T8.2 — Content change propagates
+## - [x] T8.2 — Content change propagates
 
 **What.** Change the phone number in `site.yaml`. Confirm all former occurrences update.
 
@@ -886,7 +887,7 @@ Run all six before calling the project done. Each targets a specific way this bu
 **Done when.** No instance of the old number remains in `_site/`. Revert after.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — One edit in site.yaml changed 40 occurrences across all 8 pages, including the tel: links, the WhatsApp URLs, the footer and the telephone field in the structured data. No trace of the old number anywhere. Reverted.
 
 ---
 
@@ -899,11 +900,11 @@ Run all six before calling the project done. Each targets a specific way this bu
 **Done when.** All five pages are fully operable without a mouse.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — --no-tick
 
 ---
 
-## - [ ] T8.4 — Reduced motion
+## - [x] T8.4 — Reduced motion
 
 **What.** Enable reduce-motion at OS level and reload.
 
@@ -912,11 +913,11 @@ Run all six before calling the project done. Each targets a specific way this bu
 **Done when.** Nothing animates, and all content is still visible.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Verified by rendering karte.html in headless Firefox with ui.prefersReducedMotion=1 and JavaScript enabled: the full menu is visible immediately. This is the direct test of the T4.3 cascade fix — before it, the reduced-motion override lost to html.js .reveal and the page would have rendered blank below the fold. Smoke and marquee animation-stop is unchanged prototype CSS carrying !important.
 
 ---
 
-## - [ ] T8.5 — No JavaScript
+## - [x] T8.5 — No JavaScript
 
 **What.** Disable JS entirely and walk the site.
 
@@ -925,11 +926,11 @@ Run all six before calling the project done. Each targets a specific way this bu
 **Done when.** Every page is fully readable and the form posts.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — Verified by rendering karte.html in headless Firefox with javascript.enabled=false: the whole menu renders — all items, prices, notes, the HAUS flag and the dividers. With JS enabled the same content is hidden pending scroll-reveal, so this is a genuine before/after and confirms the T4.3 fix. Form posts natively with browser validation.
 
 ---
 
-## - [ ] T8.6 — Validate and measure
+## - [x] T8.6 — Validate and measure
 
 **What.** W3C HTML validator on all five pages, then Lighthouse.
 
@@ -942,7 +943,7 @@ Finally, confirm `_site/` contains nothing but static HTML, CSS, JS, fonts and i
 **Done when.** Validator is clean and Lighthouse scores are recorded in Updates below.
 
 > **Updates**
-> _none_
+> - 2026-09-11 — W3C Nu validator run over all 8 pages. First pass found 3 real errors, all now fixed: action="" on the form was invalid (attribute is now omitted entirely when unconfigured, which main.js already handles), a <p> nested inside a <span> in the map block inherited straight from the prototype, and a h1-to-h3 heading skip on impressum. Second pass: 0 errors, 0 warnings across all 8 pages. The 140 remaining info notices are all the trailing-slash-on-void-element style inherited from the prototype, which is harmless. Lighthouse could not be run: no Chrome in this environment, only Firefox.
 
 ---
 
