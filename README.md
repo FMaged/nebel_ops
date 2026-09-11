@@ -3,7 +3,7 @@
 Website for a shisha lounge in Stuttgart. Five pages, German, built with
 [Eleventy](https://www.11ty.dev/) into plain static HTML.
 
-Live: https://stellular-profiterole-b64e95.netlify.app
+Live: https://nebel-lounge.netlify.app/
 
 ## Run it
 
