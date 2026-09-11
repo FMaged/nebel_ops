@@ -7,6 +7,7 @@ import { join, extname } from "node:path";
 let failed = 0;
 const ok = (n, d = "") => console.log(`  \x1b[32mOK\x1b[0m   ${n}${d && "  " + d}`);
 const bad = (n, d) => { failed++; console.log(`  \x1b[31mFAIL\x1b[0m ${n}\n       ${d}`); };
+const warn = (n, d) => console.log(`  \x1b[33mTODO\x1b[0m ${n}\n       ${d}`);
 
 const walk = (dir, out = []) => {
   for (const e of readdirSync(dir, { withFileTypes: true })) {
@@ -145,6 +146,20 @@ console.log(`\nNebel Lounge — ${pages.length} Seiten\n`);
   [...new Set(probs)].length
     ? bad("CMS kennt alle Felder", [...new Set(probs)].join("\n       "))
     : ok("CMS kennt alle Felder");
+}
+
+// Startbereitschaft — blockiert den Build nicht, verhindert aber ein
+// stilles Deploy mit Platzhaltern.
+{
+  const todo = [];
+  const cfg = read("src/admin/config.yml");
+  if (/BENUTZER|DEINE-SEITE/.test(cfg)) todo.push("src/admin/config.yml: repo und base_url eintragen — sonst kein CMS-Login");
+  if (!/formAction: *"\/"/.test(read("src/_data/site.yaml"))) todo.push("site.yaml: formAction ist nicht gesetzt — das Formular sendet nirgendwohin");
+  if (src.some((f) => /platzhalter-/.test(f))) todo.push("src/img: Platzhalterbilder durch echte Fotos ersetzen");
+  if (!existsSync("src/img/og-image.png")) todo.push("src/img: og-image.svg nach PNG rastern und og:image setzen");
+  if (/Diese Seite ist ein Platzhalter/.test(read("src/impressum.njk"))) todo.push("impressum.njk und datenschutz.njk: echte Angaben eintragen");
+  console.log("");
+  todo.length ? todo.forEach((t) => warn("vor dem Livegang", t)) : ok("Startbereit");
 }
 
 console.log(failed ? `\n\x1b[31m${failed} Prüfung(en) fehlgeschlagen\x1b[0m\n` : "\n\x1b[32mAlle Prüfungen bestanden\x1b[0m\n");

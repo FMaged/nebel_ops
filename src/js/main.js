@@ -104,7 +104,12 @@ if (form && formOk && formError) {
     var senden = form.querySelector("button[type=submit]");
     if (senden) { senden.disabled = true; }
 
-    fetch(ziel, { method: "POST", body: new FormData(form) })
+    // Netlify erwartet urlencoded, nicht multipart
+    fetch(ziel, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
       .then(function (antwort) {
         if (!antwort.ok) { throw new Error(antwort.status); }
         form.hidden = true;

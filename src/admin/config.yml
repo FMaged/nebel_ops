@@ -1,11 +1,15 @@
 # Sveltia CMS — liest dieselben YAML-Dateien, die auch die Seite baut.
 # Das Format ist Decap-kompatibel, ein Wechsel wäre also nur ein anderes Script.
 #
-# repo muss vor dem ersten Login auf das echte GitHub-Repository zeigen (T7.2).
+# VOR DEM ERSTEN LOGIN AUSFÜLLEN (siehe T7.2 in TASKS.md):
+#   repo      = GitHub-Benutzer/Repository-Name
+#   base_url  = die Netlify-Adresse dieser Seite
+# Netlify übernimmt die Anmeldung, ein eigener Auth-Dienst ist nicht nötig.
 backend:
   name: github
-  repo: BENUTZER/nebel_ops
+  repo: BENUTZER/nebel_ops          # <-- anpassen
   branch: main
+  base_url: https://DEINE-SEITE.netlify.app   # <-- anpassen
 
 media_folder: src/img
 public_folder: img

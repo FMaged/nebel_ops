@@ -36,7 +36,7 @@ New tasks get the next free number in their phase and are appended, never insert
 | 5 — Production basics | 6 | 5 |
 | 6 — Images and map | 2 | 0 |
 | 7 — CMS (optional) | 3 | 2 |
-| 8 — Final verification | 7 | 6 |
+| 8 — Final verification | 8 | 7 |
 
 ---
 
@@ -626,6 +626,7 @@ Drop `novalidate` so the browser validates natively when JS is off.
 
 > **Updates**
 > - 2026-09-11 — Form is now a real POST with a honeypot, and novalidate is gone so the browser enforces required fields. site.formAction is still empty because hosting is undecided, so submissions are NOT delivered anywhere yet — this is the one thing blocking real use, and it is a one-line change in site.yaml once the host is picked.
+> - 2026-09-11 — Hosting decided: Netlify. formAction is now "/", the form carries name, data-netlify and data-netlify-honeypot=bot-field, and a hidden form-name field. The honeypot from this task is reused as Netlify's. Without JS the form posts natively and Netlify intercepts it; events.html still validates with zero errors.
 
 ---
 
@@ -645,6 +646,7 @@ Everything else in `main.js` — burger menu, scroll header, reveal observer, to
 
 > **Updates**
 > - 2026-09-11 — Rewritten to send via fetch. Added a #anfrage-fehler block with the phone number and WhatsApp link, shown on network failure AND when no endpoint is configured — the original bug was showing a confirmation for a submission that went nowhere, so failing loudly is the point. Submit button disables while sending. The existing focus management on the confirmation was kept.
+> - 2026-09-11 — Switched the fetch body from FormData to URLSearchParams with an urlencoded content type, because Netlify's AJAX form endpoint expects urlencoded rather than multipart.
 
 ---
 
@@ -858,6 +860,7 @@ Write the actual steps into this task's Updates block once hosting is chosen, si
 
 > **Updates**
 > - 2026-09-11 — --no-tick
+> - 2026-09-11 — --no-tick
 
 ---
 
@@ -995,6 +998,82 @@ A suite that only ever passes is worse than none.
 
 **Done when.** `npm test` builds and reports all checks green, and injecting a
 known bug turns it red.
+
+> **Updates**
+> _none_
+
+---
+
+## - [x] T8.8 — Warn about launch blockers
+
+**What.** A launch-readiness section in 
+> nebel-lounge@1.0.0 check
+> node scripts/check.mjs
+
+
+Nebel Lounge — 8 Seiten
+
+  [32mOK[0m   Kontaktdaten nur in site.yaml
+  [32mOK[0m   Keine Inline-Styles
+  [32mOK[0m   Farben nur in tokens.css
+  [32mOK[0m   CSS-Variablen lösen auf  17 Tokens
+  [32mOK[0m   Keine toten internen Links
+  [32mOK[0m   Keine doppelten IDs
+  [32mOK[0m   Kopfdaten und Zugänglichkeit
+  [32mOK[0m   Strukturierte Daten gültig
+  [32mOK[0m   Bilder mit alt und festem Rahmen
+  [32mOK[0m   Inhalt ohne JavaScript sichtbar
+  [32mOK[0m   CMS kennt alle Felder
+
+  [33mTODO[0m vor dem Livegang
+       src/admin/config.yml: repo und base_url eintragen — sonst kein CMS-Login
+  [33mTODO[0m vor dem Livegang
+       src/img: Platzhalterbilder durch echte Fotos ersetzen
+  [33mTODO[0m vor dem Livegang
+       src/img: og-image.svg nach PNG rastern und og:image setzen
+  [33mTODO[0m vor dem Livegang
+       impressum.njk und datenschutz.njk: echte Angaben eintragen
+
+[32mAlle Prüfungen bestanden[0m.
+
+**Why.** Added when Netlify was wired up. Several things must be filled in before
+going live — the CMS repo, real photos, the social image, the legal text — and
+each is a placeholder that looks finished enough to ship by accident. The checks
+now list them every run.
+
+**How.** Warnings, not failures, so they do not block development. They disappear
+as each is resolved: setting  already removed one.
+
+**Done when.** 
+> nebel-lounge@1.0.0 check
+> node scripts/check.mjs
+
+
+Nebel Lounge — 8 Seiten
+
+  [32mOK[0m   Kontaktdaten nur in site.yaml
+  [32mOK[0m   Keine Inline-Styles
+  [32mOK[0m   Farben nur in tokens.css
+  [32mOK[0m   CSS-Variablen lösen auf  17 Tokens
+  [32mOK[0m   Keine toten internen Links
+  [32mOK[0m   Keine doppelten IDs
+  [32mOK[0m   Kopfdaten und Zugänglichkeit
+  [32mOK[0m   Strukturierte Daten gültig
+  [32mOK[0m   Bilder mit alt und festem Rahmen
+  [32mOK[0m   Inhalt ohne JavaScript sichtbar
+  [32mOK[0m   CMS kennt alle Felder
+
+  [33mTODO[0m vor dem Livegang
+       src/admin/config.yml: repo und base_url eintragen — sonst kein CMS-Login
+  [33mTODO[0m vor dem Livegang
+       src/img: Platzhalterbilder durch echte Fotos ersetzen
+  [33mTODO[0m vor dem Livegang
+       src/img: og-image.svg nach PNG rastern und og:image setzen
+  [33mTODO[0m vor dem Livegang
+       impressum.njk und datenschutz.njk: echte Angaben eintragen
+
+[32mAlle Prüfungen bestanden[0m lists every outstanding launch blocker and drops
+each as it is fixed.
 
 > **Updates**
 > _none_

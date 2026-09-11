@@ -24,4 +24,4 @@ instagram:
 ageNotice: Rauchen gefährdet die Gesundheit. Einlass ab 18 Jahren.
 
 # Wird in Phase 4 gesetzt, sobald das Hosting feststeht
-formAction: ""
+formAction: "/"          # Netlify nimmt das Formular unter / entgegen
